@@ -1,5 +1,55 @@
 #include "game.h"
 
+void menu_difficulty(int dif)
+{
+    switch (dif)
+    {
+    case 1: // Fácil
+        difficulty.maxRows = 10;
+        difficulty.maxColumns = 10;
+        difficulty.maxBombs = 30;
+        difficulty.maxBullets = 10;
+        difficulty.maxShields = 5;
+        break;
+    case 2: // Medio
+        difficulty.maxRows = 20;
+        difficulty.maxColumns = 20;
+        difficulty.maxBombs = 80;
+        difficulty.maxBullets = 10;
+        difficulty.maxShields = 5;
+        break;
+    case 3: // Difícil
+        difficulty.maxRows = 30;
+        difficulty.maxColumns = 30;
+        difficulty.maxBombs = 100;
+        difficulty.maxBullets = 10;
+        difficulty.maxShields = 5;
+        break;
+    default: // Multijugador
+        break;
+    }
+}
+
+void game_over_message()
+{
+    if (error_type.bombExplote)
+    {
+        cout << "¡Has pisado una bomba!\n";
+    }
+    else if (error_type.repeatCoordinate)
+    {
+        cout << "¡Coordenada repetida! No es válido.\n";
+    }
+    else if (error_type.outOfRange)
+    {
+        cout << "¡Coordenada fuera del rango establecido!\n";
+    }
+    else if (error_type.dataTypeInvalid)
+    {
+        cout << "Dato inválido. Debe ingresar un número entero dentro del rango.\n";
+    }
+}
+
 vector<vector<int>> random_coordinates(vector<vector<int>>& bombXY)
 {
     int bombsTotal = difficulty.maxBombs;
