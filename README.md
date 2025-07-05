@@ -26,7 +26,7 @@ Los jugadores introducen coordenadas para explorar el mapa. Si encuentran un tes
 
 ## Equipo
 
-- **Nombre del equipo:** CodeExplorers
+- **Nombre del equipo:** IOT (Inexpertos Obligados a Trabajar)
 
 ### Integrantes del equipo
 
