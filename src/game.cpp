@@ -67,3 +67,33 @@ vector<vector<int>> random_coordinates(vector<vector<int>>& bombXY)
     }
     return bombXY;
 }
+
+bool prove_coordinates(const vector<int> &coordinate, const vector<vector<int>> &bombXY)
+{
+
+    // Verifica si está fuera de rango
+    if ((coordinate[0] <= 0 || coordinate[0] > difficulty.maxColumns) ||
+        (coordinate[1] <= 0 || coordinate[1] > difficulty.maxRows))
+    {
+        error_type.outOfRange = true;
+        return true;
+    }
+
+    // Verifica si es coordenada repetida
+    if (find(game_data.repeat.begin(), game_data.repeat.end(), coordinate) != game_data.repeat.end())
+    {
+        error_type.repeatCoordinate = true;
+        return true;
+    }
+
+    // Verifica si es una bomba
+    if (find(bombXY.begin(), bombXY.end(), coordinate) != bombXY.end())
+    {
+        game_data.bomb_explote.push_back(coordinate);
+        error_type.bombExplote = true;
+        return true;
+    }
+
+    game_data.treasureXY.push_back(coordinate);
+    return false;
+}

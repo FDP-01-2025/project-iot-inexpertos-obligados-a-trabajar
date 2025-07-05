@@ -6,6 +6,24 @@
 #include <iostream>
 using namespace std;
 
+struct GameData
+{
+    int max_players;
+    bool game_status = true;
+    vector<vector<int>> bomb_explote; // Coordenadas de bombas explotadas
+    vector<vector<int>> repeat;       // Coordenadas repetidas
+    vector<vector<int>> treasureXY;   // Coordenadas de tesoros encontrados
+
+    void reset()
+    {
+        bomb_explote.clear();
+        repeat.clear();
+        treasureXY.clear();
+    }
+};
+
+extern GameData game_data;
+
 struct Difficulty
 {
     int maxRows;    // Número máximo de filas
@@ -46,5 +64,6 @@ extern ErrorType error_type;
 void menu_difficulty(int dif);
 void game_over_message();
 vector<vector<int>> random_coordinates(vector<vector<int>>& bombXY);
+bool prove_coordinates(const vector<int> &coordinate, const vector<vector<int>> &bombXY);
 
 #endif
