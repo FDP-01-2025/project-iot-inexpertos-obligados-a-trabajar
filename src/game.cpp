@@ -1,4 +1,7 @@
 #include "game.h"
+#include "players.h"
+#include <algorithm>
+#include <iostream>
 
 void menu_difficulty(int dif)
 {
@@ -34,23 +37,23 @@ void game_over_message()
 {
     if (error_type.bombExplote)
     {
-        cout << "¡Has pisado una bomba!\n";
+        std::cout << "¡Has pisado una bomba!\n";
     }
     else if (error_type.repeatCoordinate)
     {
-        cout << "¡Coordenada repetida! No es válido.\n";
+        std::cout << "¡Coordenada repetida! No es válido.\n";
     }
     else if (error_type.outOfRange)
     {
-        cout << "¡Coordenada fuera del rango establecido!\n";
+        std::cout << "¡Coordenada fuera del rango establecido!\n";
     }
     else if (error_type.dataTypeInvalid)
     {
-        cout << "Dato inválido. Debe ingresar un número entero dentro del rango.\n";
+        std::cout << "Dato inválido. Debe ingresar un número entero dentro del rango.\n";
     }
 }
 
-vector<vector<int>> random_coordinates(vector<vector<int>>& bombXY)
+std::vector<std::vector<int>> random_coordinates(std::vector<std::vector<int>> &bombXY)
 {
     int bombsTotal = difficulty.maxBombs;
 
@@ -58,7 +61,7 @@ vector<vector<int>> random_coordinates(vector<vector<int>>& bombXY)
     {
         int bombX = rand() % difficulty.maxRows + 1;
         int bombY = rand() % difficulty.maxColumns + 1;
-        vector<int> candidate = {bombX, bombY};
+        std::vector<int> candidate = {bombX, bombY};
 
         if (find(bombXY.begin(), bombXY.end(), candidate) == bombXY.end())
         {
@@ -68,7 +71,7 @@ vector<vector<int>> random_coordinates(vector<vector<int>>& bombXY)
     return bombXY;
 }
 
-bool prove_coordinates(const vector<int> &coordinate, const vector<vector<int>> &bombXY)
+bool prove_coordinates(const std::vector<int> &coordinate, const std::vector<std::vector<int>> &bombXY)
 {
 
     // Verifica si está fuera de rango
@@ -96,4 +99,16 @@ bool prove_coordinates(const vector<int> &coordinate, const vector<vector<int>> 
 
     game_data.treasureXY.push_back(coordinate);
     return false;
+}
+
+void reset_game_state(std::vector<std::vector<int>> &bombXY)
+{
+    game_data.reset();
+    error_type.reset();
+    bombXY.clear();
+    for (int i = 0; i < 4; i++)
+    {
+        players[i].points = 0;
+        players[i].is_alive = false;
+    }
 }

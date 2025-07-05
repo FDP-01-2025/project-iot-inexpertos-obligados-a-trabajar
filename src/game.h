@@ -2,17 +2,14 @@
 #define GAME_H
 
 #include <vector>
-#include <algorithm>
-#include <iostream>
-using namespace std;
 
 struct GameData
 {
     int max_players;
     bool game_status = true;
-    vector<vector<int>> bomb_explote; // Coordenadas de bombas explotadas
-    vector<vector<int>> repeat;       // Coordenadas repetidas
-    vector<vector<int>> treasureXY;   // Coordenadas de tesoros encontrados
+    std::vector<std::vector<int>> bomb_explote; // Coordenadas de bombas explotadas
+    std::vector<std::vector<int>> repeat;       // Coordenadas repetidas
+    std::vector<std::vector<int>> treasureXY;   // Coordenadas de tesoros encontrados
 
     void reset()
     {
@@ -63,7 +60,8 @@ extern ErrorType error_type;
 
 void menu_difficulty(int dif);
 void game_over_message();
-vector<vector<int>> random_coordinates(vector<vector<int>>& bombXY);
-bool prove_coordinates(const vector<int> &coordinate, const vector<vector<int>> &bombXY);
+std::vector<std::vector<int>> random_coordinates(std::vector<std::vector<int>>& bombXY);
+bool prove_coordinates(const std::vector<int> &coordinate, const std::vector<std::vector<int>> &bombXY);
+void reset_game_state(std::vector<std::vector<int>> &bombXY);
 
 #endif
