@@ -69,6 +69,11 @@ std::vector<std::vector<int>> random_coordinates(std::vector<std::vector<int>> &
             bombXY.push_back(candidate); // Adds the coordinate to the vector of bomb coordinates
         }
     }
+
+    for(int i = 0; i < bombXY.size(); i++){
+        std::cout << "X: " << bombXY[i][0] << " Y: " << bombXY[i][1] << std::endl;
+    }
+    
     return bombXY; // Returns the vector of bomb coordinates
 }
 

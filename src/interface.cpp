@@ -2,6 +2,8 @@
 #include "game.h"
 #include "players.h"
 #include "configuration.h"
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 
 void print_board()
@@ -74,7 +76,7 @@ void print_board()
 // Function for multiplayer mode
 void game(std::vector<std::vector<int>> &bombXY)
 {
-    bool lose = false;
+    bool lose = false, bomb_explote = false;
     int positionX = 0, positionY = 0, retire = 0;
     std::vector<int> coordinate;
 
@@ -87,6 +89,8 @@ void game(std::vector<std::vector<int>> &bombXY)
         {
             if (players[turn].is_alive)
             {
+                bomb_explote = false;
+                error_type.reset(); // Reset error flags
                 // Prints the turn of the player and the points
                 std::cout << "\nTurno de " << players[turn].name << " (Puntos: " << players[turn].points << ")\n";
                 std::cout << "Ingrese sus coordenadas (X Y): \n";
@@ -101,20 +105,23 @@ void game(std::vector<std::vector<int>> &bombXY)
                 lose = prove_coordinates(coordinate, bombXY);
                 game_data.repeat.push_back(coordinate);
 
-                player_action(turn, lose); // Performs the action of the player
+                player_action(turn, lose, bomb_explote); // Performs the action of the player
 
-                if (lose)
+                if (lose && !players[turn].action_shoot && !players[turn].action_protect)
                 {                        // If the player loses
                     game_over_message(); // Shows the game over message
                     if (error_type.bomb_explote)
                     { // If the player loses
                         players[turn].is_alive = false;
-                        std::cout << players[turn].name << " lost!\n"; // Shows the player who lost
+                        game_data.bomb_explote.push_back(coordinate);
+                        std::cout << players[turn].name << " pierde!\n"; // Shows the player who lost
                     }
                 }
-                else
-                { // If the coordinate is valid
+                else if (!bomb_explote && (players[turn].action_shoot || players[turn].action_protect || players[turn].excavate))
+                {
+                    // If the coordinate is valid
                     players[turn].points += 20;
+                    game_data.treasure_XY.push_back(coordinate);
                     std::cout << "¡Tesoro encontrado! +20 puntos\n";
                 }
 
@@ -130,6 +137,8 @@ void game(std::vector<std::vector<int>> &bombXY)
                         players[turn].points += 40;
                     }
                 }
+
+                players[turn].actions_reset();
             }
         }
 

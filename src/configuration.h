@@ -10,7 +10,16 @@ struct Players
     int points;
     int bullets;
     int shields;
+    bool action_shoot;
+    bool action_protect;
+    bool excavate;
     bool is_alive;
+
+    void actions_reset(){
+        action_shoot = false;
+        action_protect = false;
+        excavate = false;
+    }
 };
 
 extern Players players[4];
