@@ -1,6 +1,7 @@
 #include "src/game.h"
 #include "src/interface.h"
 #include "src/players.h"
+#include "src/configuration.h"
 #include <iostream>
 
 int main()
@@ -17,7 +18,7 @@ int main()
 
         if (opcion == 1)
         {
-            reset_game_state(bombXY); // Resets the game state
+            reset_game(bombXY);
             game_data.max_players = 1; // Sets the number of players to 1
 
             int dif;
@@ -35,7 +36,7 @@ int main()
         }
         else if (opcion == 2)
         {
-            reset_game_state(bombXY); // Resets the game state
+            reset_game(bombXY);
 
             int dif;
             std::cout << "\nSelecciona dificultad para Multijugador:\n";
