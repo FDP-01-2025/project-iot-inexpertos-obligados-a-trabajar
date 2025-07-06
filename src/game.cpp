@@ -60,7 +60,7 @@ std::vector<std::vector<int>> random_coordinates(std::vector<std::vector<int>> &
 
     while (bombXY.size() < bombsTotal)
     {
-        int bombX = rand() % difficulty.max_rows + 1; // Generates a random number between 1 and the maximum number of rows
+        int bombX = rand() % difficulty.max_rows + 1;    // Generates a random number between 1 and the maximum number of rows
         int bombY = rand() % difficulty.max_columns + 1; // Generates a random number between 1 and the maximum number of columns
         std::vector<int> candidate = {bombX, bombY};
 
@@ -70,10 +70,11 @@ std::vector<std::vector<int>> random_coordinates(std::vector<std::vector<int>> &
         }
     }
 
-    for(int i = 0; i < bombXY.size(); i++){
+    for (int i = 0; i < bombXY.size(); i++)
+    {
         std::cout << "X: " << bombXY[i][0] << " Y: " << bombXY[i][1] << std::endl;
     }
-    
+
     return bombXY; // Returns the vector of bomb coordinates
 }
 
@@ -85,24 +86,24 @@ bool prove_coordinates(const std::vector<int> &coordinate, const std::vector<std
         (coordinate[1] <= 0 || coordinate[1] > difficulty.max_rows))
     {
         error_type.out_of_range = true; // Sets the error type to out of range
-        return true; // Returns true if the coordinate is out of range
+        return true;                    // Returns true if the coordinate is out of range
     }
 
     // Checks if the coordinate is repeated
     if (find(game_data.repeat.begin(), game_data.repeat.end(), coordinate) != game_data.repeat.end())
     {
         error_type.repeat_coordinate = true; // Sets the error type to repeat coordinate
-        return true; // Returns true if the coordinate is repeated
+        return true;                         // Returns true if the coordinate is repeated
     }
 
     // Checks if the coordinate is a bomb
     if (find(bombXY.begin(), bombXY.end(), coordinate) != bombXY.end())
     {
         game_data.bomb_explote.push_back(coordinate); // Adds the coordinate to the vector of bomb coordinates
-        error_type.bomb_explote = true; // Sets the error type to bomb explosion
-        return true; // Returns true if the coordinate is a bomb
+        error_type.bomb_explote = true;               // Sets the error type to bomb explosion
+        return true;                                  // Returns true if the coordinate is a bomb
     }
 
-    game_data.treasure_XY.push_back(coordinate); // Adds the coordinate to the vector of treasure coordinates    
+    game_data.treasure_XY.push_back(coordinate); // Adds the coordinate to the vector of treasure coordinates
     return false;
 }

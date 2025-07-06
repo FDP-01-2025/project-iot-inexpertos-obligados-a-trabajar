@@ -138,24 +138,24 @@ void game(std::vector<std::vector<int>> &bombXY)
                     }
                 }
 
-                players[turn].actions_reset();
+                players[turn].actions_reset(); // Resets the actions of the player
             }
         }
 
-        game_data.game_status = false;
+        game_data.game_status = false; // Sets the game status to false
         for (int i = 0; i < game_data.max_players; i++)
         { // Checks if any player is still alive
             if (players[i].is_alive)
             { // If the player is still alive
-                game_data.game_status = true;
+                game_data.game_status = true; // Sets the game status to true
                 break;
             }
         }
     }
 
-    std::cout << "\n=== GAME OVER ===\n";
+    std::cout << "\n=== GAME OVER ===\n"; // Prints the game over message
     for (int i = 0; i < game_data.max_players; i++)
     { // Prints the points of each player
-        std::cout << players[i].name << ": " << players[i].points << " puntos\n";
+        std::cout << players[i].name << ": " << players[i].points << " puntos\n"; // Prints the points of each player
     }
 }

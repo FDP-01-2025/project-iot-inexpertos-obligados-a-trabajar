@@ -8,7 +8,7 @@ int main()
 {
 
     int opcion; // Variable to store the option selected by the user
-    std::vector<std::vector<int>> bombXY;
+    std::vector<std::vector<int>> bombXY; // Vector of vectors to store the bomb coordinates
 
     while (true)
     {
@@ -22,17 +22,17 @@ int main()
             game_data.max_players = 1; // Sets the number of players to 1
 
             int dif;
-            std::cout << "\nSelecciona dificultad:\n"; 
+            std::cout << "\nSelecciona dificultad:\n";
             std::cout << "1. Fácil (10x10 - 30 bombas)\n";
             std::cout << "2. Medio (20x20 - 80 bombas)\n";
             std::cout << "3. Difícil (30x30 - 100 bombas)\n";
             std::cout << "Opción: ";
             std::cin >> dif; // Reads the difficulty selected by the user
 
-            menu_difficulty(dif); // Sets the difficulty
+            menu_difficulty(dif);                // Sets the difficulty
             bombXY = random_coordinates(bombXY); // Generates random coordinates for the bombs
-            player_configuration(); // Configures the players
-            game(bombXY); // Plays the game
+            player_configuration();              // Configures the players
+            game(bombXY);                        // Plays the game
         }
         else if (opcion == 2)
         {
@@ -55,10 +55,10 @@ int main()
                 continue;
             }
 
-            menu_difficulty(dif); // Sets the difficulty
-            player_configuration(); // Configures the players
+            menu_difficulty(dif);                // Sets the difficulty
+            player_configuration();              // Configures the players
             bombXY = random_coordinates(bombXY); // Generates random coordinates for the bombs
-            game(bombXY); // Plays the game
+            game(bombXY);                        // Plays the game
         }
         else if (opcion == 3)
         {
