@@ -61,5 +61,20 @@ void load_game(std::vector<std::vector<int>>& bombXY) {
             if (idx >= 0 && idx < 4) {
                 players[idx].points = pts;
             }
+            else if (line.find("bomb=") == 0) {
+            std::string coords = line.substr(5);
+            size_t coma = coords.find(',');
+            if (coma != std::string::npos) {
+                int x = std::stoi(coords.substr(0, coma));
+                int y = std::stoi(coords.substr(coma + 1));
+                bombXY.push_back({x, y});
+            }
+        }
+    }
+
+    game_data.game_status = true;
+
+    std::cout << "Partida cargada con éxito.\n";
+}
         }
 }
