@@ -1,6 +1,12 @@
 #include "configuration.h"
 #include "players.h"
 
+Players players[4];
+GameData game_data;
+Difficulty difficulty;
+ErrorType error_type;
+
+
 void reset_game(std::vector<std::vector<int>> &bombXY){
     game_data.reset();
     difficulty.reset();

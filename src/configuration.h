@@ -2,31 +2,34 @@
 #define CONFIGURATION_H
 
 #include <vector>
+#include <string>
 
 struct Players
 {
-    std::string name;   // Player name
-    int points;    // Points accumulated
-    int bullets;   // Available bullets
-    int shields;   // Available shield
-    bool is_alive; // Indicates if the player is alive
+    std::string name;
+    int points;
+    int bullets;
+    int shields;
+    bool is_alive;
 };
 
 extern Players players[4];
 
 struct GameData
 {
-    int max_players;                            // Number of players
-    bool game_status = true;                    // Game status
-    std::vector<std::vector<int>> bomb_explote; // Coordenadas de bombas explotadas
-    std::vector<std::vector<int>> repeat;       // Coordenadas repetidas
-    std::vector<std::vector<int>> treasure_XY;  // Coordenadas de tesoros encontrados
+    int max_players;
+    bool game_status = true;
+    std::vector<std::vector<int>> bomb_explote;
+    std::vector<std::vector<int>> repeat;
+    std::vector<std::vector<int>> treasure_XY;
 
-    void reset(){
+    void reset()
+    {
         bomb_explote.clear();
         repeat.clear();
         treasure_XY.clear();
         max_players = 0;
+        game_status = true;
     };
 };
 
@@ -34,13 +37,14 @@ extern GameData game_data;
 
 struct Difficulty
 {
-    int max_rows;    // Maximum number of rows
-    int max_columns; // Maximum number of columns
-    int max_bombs;   // Maximum number of bombs
-    int max_bullets; // Maximum number of bullets
-    int max_shields; // Maximum number of shields
+    int max_rows;
+    int max_columns;
+    int max_bombs;
+    int max_bullets;
+    int max_shields;
+
     void reset()
-    { // Resets the values to the default values
+    {
         max_rows = 0;
         max_columns = 0;
         max_bombs = 0;
@@ -53,13 +57,13 @@ extern Difficulty difficulty;
 
 struct ErrorType
 {
-    bool bomb_explote;      // Indicates if a bomb exploded
-    bool repeat_coordinate; // Indicates if a coordinate was repeated
-    bool out_of_range;      // Indicates if a coordinate is out of range
-    bool data_type_invalid; // Indicates if the data type is invalid
+    bool bomb_explote;
+    bool repeat_coordinate;
+    bool out_of_range;
+    bool data_type_invalid;
 
     void reset()
-    { // Resets the game state
+    {
         bomb_explote = false;
         repeat_coordinate = false;
         out_of_range = false;
@@ -69,6 +73,6 @@ struct ErrorType
 
 extern ErrorType error_type;
 
-void reset_game(std::vector<std::vector<int>> &bombXY);// Resets the game state
+void reset_game(std::vector<std::vector<int>> &bombXY);
 
 #endif
