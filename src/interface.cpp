@@ -108,14 +108,11 @@ void game(std::vector<std::vector<int>> &bombXY)
                 player_action(turn, lose, bomb_explote); // Performs the action of the player
 
                 if (lose && !players[turn].action_shoot && !players[turn].action_protect)
-                {                        // If the player loses
+                {
                     game_over_message(); // Shows the game over message
-                    if (error_type.bomb_explote)
-                    { // If the player loses
-                        players[turn].is_alive = false;
-                        game_data.bomb_explote.push_back(coordinate);
-                        std::cout << players[turn].name << " pierde!\n"; // Shows the player who lost
-                    }
+                    players[turn].is_alive = false;
+                    game_data.bomb_explote.push_back(coordinate);
+                    std::cout << players[turn].name << " pierde!\n"; // Shows the player who lost
                 }
                 else if (!bomb_explote && (players[turn].action_shoot || players[turn].action_protect || players[turn].excavate))
                 {
@@ -146,7 +143,7 @@ void game(std::vector<std::vector<int>> &bombXY)
         for (int i = 0; i < game_data.max_players; i++)
         { // Checks if any player is still alive
             if (players[i].is_alive)
-            { // If the player is still alive
+            {                                 // If the player is still alive
                 game_data.game_status = true; // Sets the game status to true
                 break;
             }
@@ -155,7 +152,7 @@ void game(std::vector<std::vector<int>> &bombXY)
 
     std::cout << "\n=== GAME OVER ===\n"; // Prints the game over message
     for (int i = 0; i < game_data.max_players; i++)
-    { // Prints the points of each player
+    {                                                                             // Prints the points of each player
         std::cout << players[i].name << ": " << players[i].points << " puntos\n"; // Prints the points of each player
     }
 }

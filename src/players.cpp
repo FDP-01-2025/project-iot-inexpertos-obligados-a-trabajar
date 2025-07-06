@@ -86,7 +86,8 @@ void player_action(int &turn, bool &lose, bool &bomb_explote) // Performs the ac
         pistol_shot(turn, lose, bomb_explote); // Performs the action of the player
         break;
     default:
-        std::cout << "Acción inválida, intente nuevamente\n";
+        std::cout << "Acción inválid, usted a perdido\n";
+        players[turn].is_alive = false;
         break;
     }
 }
