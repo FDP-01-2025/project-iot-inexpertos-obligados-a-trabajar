@@ -5,18 +5,19 @@
 
 struct Players
 {
-    std::string name;   // Nombre del jugador
-    int points;    // Puntos acumulados
-    int bullets;   // Balas disponibles
-    int shields;   // Escudo disponible
-    bool is_alive; // Indica si el jugador está vivo
+    std::string name;   // Player name
+    int points;    // Points accumulated
+    int bullets;   // Available bullets
+    int shields;   // Available shield
+    bool is_alive; // Indicates if the player is alive
 };
 
 extern Players players[4];
 
-void player_configuration();
-void player_action(int &turn, bool &lose);
-void pistol_shot(int &turn, bool &lose);
-void shield_protection(int &turn, bool &lose);
+void player_configuration(); // Configures the players
+// All the functions for the player actions are the next:
+void player_action(int &turn, bool &lose); 
+void pistol_shot(int &turn, bool &lose); 
+void shield_protection(int &turn, bool &lose); 
 
 #endif

@@ -7,108 +7,108 @@ void menu_difficulty(int dif)
 {
     switch (dif)
     {
-    case 1: // Fácil
-        difficulty.maxRows = 10;
-        difficulty.maxColumns = 10;
-        difficulty.maxBombs = 30;
-        difficulty.maxBullets = 10;
-        difficulty.maxShields = 5;
+    case 1: // Easy
+        difficulty.max_rows = 10;
+        difficulty.max_columns = 10;
+        difficulty.max_bombs = 30;
+        difficulty.max_bullets = 10;
+        difficulty.max_shields = 5;
         break;
-    case 2: // Medio
-        difficulty.maxRows = 20;
-        difficulty.maxColumns = 20;
-        difficulty.maxBombs = 80;
-        difficulty.maxBullets = 10;
-        difficulty.maxShields = 5;
+    case 2: // Medium
+        difficulty.max_rows = 20;
+        difficulty.max_columns = 20;
+        difficulty.max_bombs = 80;
+        difficulty.max_bullets = 10;
+        difficulty.max_shields = 5;
         break;
-    case 3: // Difícil
-        difficulty.maxRows = 30;
-        difficulty.maxColumns = 30;
-        difficulty.maxBombs = 100;
-        difficulty.maxBullets = 10;
-        difficulty.maxShields = 5;
+    case 3: // Hard
+        difficulty.max_rows = 30;
+        difficulty.max_columns = 30;
+        difficulty.max_bombs = 100;
+        difficulty.max_bullets = 10;
+        difficulty.max_shields = 5;
         break;
-    default: // Multijugador
+    default: // Multiplayer
         break;
     }
 }
 
-void game_over_message()
+void game_over_message() // Shows the error message
 {
-    if (error_type.bombExplote)
+    if (error_type.bomb_explote) // Checks if the error type is bomb explosion
     {
         std::cout << "¡Has pisado una bomba!\n";
     }
-    else if (error_type.repeatCoordinate)
+    else if (error_type.repeat_coordinate) // Checks if the error type is repeat coordinate
     {
         std::cout << "¡Coordenada repetida! No es válido.\n";
     }
-    else if (error_type.outOfRange)
+    else if (error_type.out_of_range) // Checks if the error type is out of range
     {
         std::cout << "¡Coordenada fuera del rango establecido!\n";
     }
-    else if (error_type.dataTypeInvalid)
+    else if (error_type.data_type_invalid) // Checks if the error type is data type invalid
     {
         std::cout << "Dato inválido. Debe ingresar un número entero dentro del rango.\n";
     }
 }
 
-std::vector<std::vector<int>> random_coordinates(std::vector<std::vector<int>> &bombXY)
+std::vector<std::vector<int>> random_coordinates(std::vector<std::vector<int>> &bombXY) // Generates random coordinates for the bombs
 {
-    int bombsTotal = difficulty.maxBombs;
+    int bombsTotal = difficulty.max_bombs;
 
     while (bombXY.size() < bombsTotal)
     {
-        int bombX = rand() % difficulty.maxRows + 1;
-        int bombY = rand() % difficulty.maxColumns + 1;
+        int bombX = rand() % difficulty.max_rows + 1; // Generates a random number between 1 and the maximum number of rows
+        int bombY = rand() % difficulty.max_columns + 1; // Generates a random number between 1 and the maximum number of columns
         std::vector<int> candidate = {bombX, bombY};
 
-        if (find(bombXY.begin(), bombXY.end(), candidate) == bombXY.end())
+        if (find(bombXY.begin(), bombXY.end(), candidate) == bombXY.end()) // Checks if the coordinate is already in the vector of bomb coordinates
         {
-            bombXY.push_back(candidate);
+            bombXY.push_back(candidate); // Adds the coordinate to the vector of bomb coordinates
         }
     }
-    return bombXY;
+    return bombXY; // Returns the vector of bomb coordinates
 }
 
-bool prove_coordinates(const std::vector<int> &coordinate, const std::vector<std::vector<int>> &bombXY)
+bool prove_coordinates(const std::vector<int> &coordinate, const std::vector<std::vector<int>> &bombXY) // Checks if the coordinate is valid
 {
 
-    // Verifica si está fuera de rango
-    if ((coordinate[0] <= 0 || coordinate[0] > difficulty.maxColumns) ||
-        (coordinate[1] <= 0 || coordinate[1] > difficulty.maxRows))
+    // Checks if the coordinate is out of range
+    if ((coordinate[0] <= 0 || coordinate[0] > difficulty.max_columns) ||
+        (coordinate[1] <= 0 || coordinate[1] > difficulty.max_rows))
     {
-        error_type.outOfRange = true;
-        return true;
+        error_type.out_of_range = true; // Sets the error type to out of range
+        return true; // Returns true if the coordinate is out of range
     }
 
-    // Verifica si es coordenada repetida
+    // Checks if the coordinate is repeated
     if (find(game_data.repeat.begin(), game_data.repeat.end(), coordinate) != game_data.repeat.end())
     {
-        error_type.repeatCoordinate = true;
-        return true;
+        error_type.repeat_coordinate = true; // Sets the error type to repeat coordinate
+        return true; // Returns true if the coordinate is repeated
     }
 
-    // Verifica si es una bomba
+    // Checks if the coordinate is a bomb
     if (find(bombXY.begin(), bombXY.end(), coordinate) != bombXY.end())
     {
-        game_data.bomb_explote.push_back(coordinate);
-        error_type.bombExplote = true;
-        return true;
+        game_data.bomb_explote.push_back(coordinate); // Adds the coordinate to the vector of bomb coordinates
+        error_type.bomb_explote = true; // Sets the error type to bomb explosion
+        return true; // Returns true if the coordinate is a bomb
     }
 
-    game_data.treasureXY.push_back(coordinate);
+    game_data.treasure_XY.push_back(coordinate); // Adds the coordinate to the vector of treasure coordinates    
     return false;
 }
 
-void reset_game_state(std::vector<std::vector<int>> &bombXY)
+void reset_game_state(std::vector<std::vector<int>> &bombXY) // Resets the game state    
 {
-    game_data.reset();
-    error_type.reset();
-    bombXY.clear();
+    game_data.reset(); // Resets the game state
+    error_type.reset(); // Resets the error state
+    bombXY.clear(); // Clears the vector of bomb coordinates
     for (int i = 0; i < 4; i++)
     {
-        players[i].points = 0;
-        players[i].is_alive = false;
+        players[i].points = 0; // Resets the points of the players
+        players[i].is_alive = false; // Resets the state of the players
     }
 }
