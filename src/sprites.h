@@ -3,7 +3,6 @@
 
 #include <string>
 
-// Función para mostrar gráficos ASCII del juego (original sin modificaciones)
 std::string sprite(std::string typeSprite);
 
 #endif
