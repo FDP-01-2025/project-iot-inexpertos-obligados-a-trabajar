@@ -45,7 +45,7 @@ void pistol_shot(int &turn, bool &lose)
         std::cout << players[turn].name << " no tiene balas, no puede disparar\n";
         return;
     }
-    else if (lose)
+    else if (lose) //If lose is true, the player shoots a bomb
     {
         std::cout << players[turn].name << " a hecho explotar una bomba! +10 puntos\n";
     }
@@ -66,7 +66,7 @@ void shield_protection(int &turn, bool &lose)
         std::cout << players[turn].name << " no tiene escudos, no puede protegerse\n";
         return;
     }
-    else if (lose)
+    else if (lose) //If lose is true, the player protects from a bomb
     {
         std::cout << players[turn].name << " se ha protegido de una bomba! +10 puntos\n";
         players[turn].shields--;

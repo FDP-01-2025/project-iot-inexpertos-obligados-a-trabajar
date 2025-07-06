@@ -10,12 +10,12 @@ void print_board()
     std::cout << "\n=== GAME BOARD ===\n";
     // Print the column numbers
     std::cout << "   ";
-    for (int col = 1; col <= difficulty.max_columns; col++)
+    for (int column = 1; column <= difficulty.max_columns; column++)
     {
-        if (col < 10)
-            std::cout << " " << col << " ";
+        if (column < 10)
+            std::cout << " " << column << " ";
         else
-            std::cout << col << " ";
+            std::cout << column << " ";
     }
     std::cout << std::endl;
 
@@ -68,7 +68,6 @@ void print_board()
         }
         std::cout << std::endl;
     }
-    std::cout << "Legend: # = Unexplored, $ = Treasure, ! = Bomb\n";
 }
 
 // Function for multiplayer mode
@@ -88,7 +87,7 @@ void game(std::vector<std::vector<int>> &bombXY)
             if (players[turn].is_alive)
             {
                 // Prints the turn of the player and the points
-                std::cout << "\nTurno de " << players[turn].name << " (Puntos: " << players[turn].points << ")\n"; 
+                std::cout << "\nTurno de " << players[turn].name << " (Puntos: " << players[turn].points << ")\n";
                 std::cout << "Ingrese sus coordenadas (X Y): \n";
                 std::cout << "X: ";
                 std::cin >> positionX;
@@ -104,7 +103,7 @@ void game(std::vector<std::vector<int>> &bombXY)
                 player_action(turn, lose); // Performs the action of the player
 
                 if (lose)
-                { // If the player loses
+                {                        // If the player loses
                     game_over_message(); // Shows the game over message
                     if (error_type.bomb_explote)
                     { // If the player loses
