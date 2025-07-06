@@ -3,17 +3,6 @@
 
 #include <string>
 
-struct Players
-{
-    std::string name;   // Player name
-    int points;    // Points accumulated
-    int bullets;   // Available bullets
-    int shields;   // Available shield
-    bool is_alive; // Indicates if the player is alive
-};
-
-extern Players players[4];
-
 void player_configuration(); // Configures the players
 // All the functions for the player actions are the next:
 void player_action(int &turn, bool &lose); 

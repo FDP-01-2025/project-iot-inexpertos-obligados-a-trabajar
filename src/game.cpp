@@ -1,5 +1,6 @@
 #include "game.h"
 #include "players.h"
+#include "configuration.h"
 #include <algorithm>
 #include <iostream>
 
@@ -99,16 +100,4 @@ bool prove_coordinates(const std::vector<int> &coordinate, const std::vector<std
 
     game_data.treasure_XY.push_back(coordinate); // Adds the coordinate to the vector of treasure coordinates    
     return false;
-}
-
-void reset_game_state(std::vector<std::vector<int>> &bombXY) // Resets the game state    
-{
-    game_data.reset(); // Resets the game state
-    error_type.reset(); // Resets the error state
-    bombXY.clear(); // Clears the vector of bomb coordinates
-    for (int i = 0; i < 4; i++)
-    {
-        players[i].points = 0; // Resets the points of the players
-        players[i].is_alive = false; // Resets the state of the players
-    }
 }

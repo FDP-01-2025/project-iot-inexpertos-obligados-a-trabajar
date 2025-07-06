@@ -1,5 +1,6 @@
 #include "players.h" 
 #include "game.h"
+#include "configuration.h"
 #include <iostream>
 
 void player_configuration() // Configures the players

@@ -1,6 +1,7 @@
 #include "interface.h"
 #include "game.h"
 #include "players.h"
+#include "configuration.h"
 #include <iostream>
 
 void print_board()
@@ -126,6 +127,7 @@ void game(std::vector<std::vector<int>> &bombXY)
                     if (retire == 1)
                     { // If the player wants to retire
                         players[turn].is_alive = false;
+                        players[turn].points += 40;
                     }
                 }
             }
