@@ -2,6 +2,7 @@
 #include "configuration.h"
 #include <iostream>
 #include <algorithm>
+#include <cstdlib> // For system() command
 
 void save_players_data(std::ofstream &archivo)
 {
@@ -38,10 +39,14 @@ void load_players_data(std::ifstream &archivo)
 
 void save_game(const std::vector<std::vector<int>> &bombXY)
 {
+    // New: Create saved_games directory if it doesn't exist (works on Windows)
+    system("mkdir saved_games 2> nul");
+
     std::vector<std::string> existingFiles;
     for (int i = 1; i <= 3; i++)
     {
-        std::string filename = "partida" + std::to_string(i) + ".txt";
+        // Modified: Added saved_games/ prefix to path
+        std::string filename = "saved_games/partida" + std::to_string(i) + ".txt";
         std::ifstream testFile(filename);
         if (testFile.good())
         {
@@ -82,7 +87,8 @@ void save_game(const std::vector<std::vector<int>> &bombXY)
             return;
         }
 
-        std::string filename = "partida" + std::to_string(seleccion) + ".txt";
+        // [MODIFIED] Added saved_games/ prefix to path
+        std::string filename = "saved_games/partida" + std::to_string(seleccion) + ".txt";
         std::ofstream archivo(filename);
         if (!archivo)
         {
@@ -123,7 +129,8 @@ void save_game(const std::vector<std::vector<int>> &bombXY)
 
     for (int i = 1; i <= 3; i++)
     {
-        std::string filename = "partida" + std::to_string(i) + ".txt";
+        // [MODIFIED] Added saved_games/ prefix to path
+        std::string filename = "saved_games/partida" + std::to_string(i) + ".txt";
         std::ifstream testFile(filename);
         if (!testFile.good())
         {
@@ -177,7 +184,8 @@ void load_game(std::vector<std::vector<int>> &bombXY)
 
     for (int i = 1; i <= 3; i++)
     {
-        std::string filename = "partida" + std::to_string(i) + ".txt";
+        // [MODIFIED] Added saved_games/ prefix to path
+        std::string filename = "saved_games/partida" + std::to_string(i) + ".txt";
         std::ifstream testFile(filename);
         if (testFile.good())
         {
