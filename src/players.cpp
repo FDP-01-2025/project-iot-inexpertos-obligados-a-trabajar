@@ -26,7 +26,8 @@ void pistol_shot(int &turn, bool &lose, bool &bomb_explote)
     if (players[turn].bullets == 0) // If the player has no bullets, he cannot shoot
     {
         std::cout<< sprites.pistol;
-        std::cout << players[turn].name << " no tiene balas, no puede disparar\n";
+        std::cout << "\033[91m" << players[turn].name << " no tiene balas, no puede disparar\033[0m\n";
+
         return;
     }
 
@@ -53,7 +54,8 @@ void shield_action_protection(int &turn, bool &lose, bool &bomb_explote)
 {
     if (players[turn].shields == 0) // If the player has no shields, he cannot protect himself
     {
-        std::cout << players[turn].name << " no tiene escudos, no puede protegerse\n";
+        std::cout << "\033[91m" << players[turn].name << " no tiene escudos, no puede protegerse\033[0m\n";
+
         return;
     }
 
@@ -77,6 +79,10 @@ void shield_action_protection(int &turn, bool &lose, bool &bomb_explote)
 
 void player_action(int &turn, bool &lose, bool &bomb_explote) // Performs the action of the player
 {
+    std::cout << "\033[1;36m" << players[turn].name << " tiene:\n";
+    std::cout << "\033[1;33m Balas: " << players[turn].bullets << "\n";
+    std::cout << "\033[1;34m Escudos: " << players[turn].shields << "\n\033[0m\n";
+
     int action; // Action of the player
     std::cout << sprites.menu_action_player; // Prints the action of the player
     std::cin >> action;
@@ -97,7 +103,7 @@ void player_action(int &turn, bool &lose, bool &bomb_explote) // Performs the ac
         game_data.game_status = false;    
     break;
     default:
-        std::cout << "Accion inválida, usted a perdido\n";
+        std::cout << "\033[91mAcción inválida, usted ha perdido\033[0m\n";
         players[turn].is_alive = false;
         break;
     }
