@@ -144,7 +144,7 @@ void game(std::vector<std::vector<int>> &bombXY)
                     { // If the player wants to retire
                         players[turn].is_alive = false;
                         players[turn].points += 40;
-                    }else if(retire != 1 || retire != 0){
+                    }else if(retire != 1 && retire != 0){
                         std::cout << players[turn].name << " por graciosito pierde!\n";
                         players[turn].is_alive = false;
                     }
