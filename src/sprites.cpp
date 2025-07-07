@@ -3,7 +3,7 @@
 
 struct Sprites
 {
-    string title = R"(
+   std::string title = R"(
 
   ___                                                                      ___ 
  ( _ )--------------------------------------------------------------------( _ )
@@ -25,7 +25,7 @@ struct Sprites
  (___)--------------------------------------------------------------------(___)
     )";
 
-    string menu = R"(
+   std::string menu = R"(
  ____________________________________ 
 |                                    |
 |   **** ENCUENTRA EL TESORO ****    |
@@ -38,7 +38,7 @@ struct Sprites
 |____________________________________|
 Seleccione una opción: )";
 
-    string dificulty = R"(
+   std::string dificulty = R"(
  _______________________________________
 |                                       |
 |        Selecciona dificultad:         |
@@ -49,7 +49,7 @@ Seleccione una opción: )";
 |_______________________________________|
 Opción: )";
 
-    string bomb = R"(
+   std::string bomb = R"(
          _.-^^---....,,--       
      _--                  --_  
     <                        >)
@@ -63,7 +63,7 @@ Opción: )";
      _____.,-#%&$@%#&#~,._____
         )";
 
-    string treasure = R"(
+   std::string treasure = R"(
        /\
       /  \
      /    \
@@ -74,7 +74,7 @@ Opción: )";
        \/
     )";
 
-    string shield = R"(
+   std::string shield = R"(
        _,--`--,_
      ,'    _    `.
     /    _/ \_    \
@@ -86,7 +86,7 @@ Opción: )";
        `-.____.-'
         )";
 
-    string pistol = R"(
+   std::string pistol = R"(
         _______ 
        /       \__________________________________
       /        |                                 |
@@ -98,14 +98,14 @@ Opción: )";
         |_____|
 )";
 
-    string gameOver = R"(
+   std::string gameOver = R"(
    __________________________
   /                         /
  /        GAME OVER        /
 /_________________________/
 )";
 
-    string winner = R"(
+   std::string winner = R"(
             .-===========-. 
          (                  )
           |       #1       |
@@ -125,7 +125,7 @@ Opción: )";
                '-____-'
     )";
 
-    string explosion = R"(
+   std::string explosion = R"(
        .-^---.
      .'       `.
     /           \
