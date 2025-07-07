@@ -39,7 +39,9 @@ void game_over_message() // Shows the error message
 {
     if (error_type.bomb_explote) // Checks if the error type is bomb explosion
     {
+        std::cout<<sprites.explosion;
         std::cout << "¡Has pisado una bomba!\n";
+        std::cout<<sprites.gameOver;
     }
     else if (error_type.repeat_coordinate) // Checks if the error type is repeat coordinate
     {
@@ -105,7 +107,6 @@ bool prove_coordinates(const std::vector<int> &coordinate, const std::vector<std
 }
 bool victory(int points, int playerIndex)
 {
-    sprites.winner;
 
     // creates a vector in pairs of(points,name) to organize it
     std::vector<std::pair<int, std::string>> rankings;
@@ -123,6 +124,7 @@ bool victory(int points, int playerIndex)
 
     if (playerIndex >= 0) {
         // show a personalized message to the player who won
+        std::cout<<sprites.winner;
         std::cout << "\n¡FELICIDADES " << players[playerIndex].name << " HAS GANADO!\n";
     } else {
         std::cout << "\n¡HAS GANADO!\n";
