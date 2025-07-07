@@ -2,6 +2,7 @@
 #include "game.h"
 #include "players.h"
 #include "configuration.h"
+#include "sprites.h"
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -129,6 +130,7 @@ void game(std::vector<std::vector<int>> &bombXY)
                 {
                     // If the coordinate is valid
                     players[turn].points += 20;
+                    std::cout<<sprites.treasure;
                     std::cout << "¡Tesoro encontrado! +20 puntos\n";
                 }
 
