@@ -1,6 +1,7 @@
 #include "game.h"
 #include "players.h"
 #include "configuration.h"
+#include "sprites.h"
 #include <algorithm>
 #include <iostream>
 
@@ -106,4 +107,44 @@ bool prove_coordinates(const std::vector<int> &coordinate, const std::vector<std
 
     game_data.treasure_XY.push_back(coordinate); // Adds the coordinate to the vector of treasure coordinates
     return false;
+}
+bool victory(int points, int playerIndex)
+{
+    sprite("Winner");
+
+    // Crear vector de pares (puntos, nombre) para ordenar
+    vector<pair<int, string>> rankings;
+    for (int i = 0; i < game_data.max_players; i++) {
+        rankings.emplace_back(players[i].points, players[i].name);
+    }
+
+    // Ordenar de mayor a menor
+    sort(rankings.rbegin(), rankings.rend());
+
+    cout << "\n=== TABLA DE POSICIONES ===\n";
+    for (size_t i = 0; i < rankings.size(); i++) {
+        cout << i+1 << ". " << rankings[i].second << ": " << rankings[i].first << " puntos\n";
+    }
+
+    if (playerIndex >= 0) {
+        // Mostrar mensaje personalizado para el ganador
+        cout << "\n¡FELICIDADES " << players[playerIndex].name << " HAS GANADO!\n";
+    } else {
+        cout << "\n¡HAS GANADO!\n";
+    }
+
+    cout << "Puntos finales: " << points << "\n";
+    print_board();
+
+    // Preguntar si quiere jugar otra partida
+    cout << "\n¿Desea jugar otra partida? (1=Sí, 0=No): ";
+    int opcion;
+    cin >> opcion;
+    if (opcion == 1) {
+        vector<vector<int>> newBombXY;
+        reset_game_state(newBombXY);
+        game_menu();
+    }
+
+    return true;
 }
