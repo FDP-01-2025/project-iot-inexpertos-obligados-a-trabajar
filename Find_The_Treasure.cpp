@@ -862,8 +862,31 @@ void player_configuration()
 {
     for (int i = 0; i < game_data.max_players; i++)
     {
-        cout << "Nombre del jugador " << i + 1 << ": ";
-        cin >> players[i].name;
+        bool validName = false;
+        while (!validName)
+        {
+            cout << "Nombre del jugador " << i + 1 << " (máx 20 caracteres, sin espacios): ";
+            cin >> players[i].name;
+            
+            // Validar el nombre
+            if (players[i].name.empty())
+            {
+                cout << "Error: El nombre no puede estar vacío.\n";
+            }
+            else if (players[i].name.length() > 20)
+            {
+                cout << "Error: El nombre es demasiado largo (máximo 20 caracteres).\n";
+            }
+            else
+            {
+                validName = true;
+            }
+            
+            // Limpiar el buffer de entrada en caso de errores
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        
         players[i].points = 0;
         players[i].bullets = difficulty.maxBullets;
         players[i].shields = difficulty.maxShields;
@@ -871,6 +894,8 @@ void player_configuration()
         players[i].action_protect = false;
         players[i].excavate = false;
         players[i].is_alive = true;
+        
+        cout << "Jugador " << players[i].name << " creado con éxito!\n";
     }
 }
 
@@ -998,15 +1023,15 @@ bool show_post_save_menu()
     system("cls");
     while (true)
     {
-        cout << "\n╔══════════════════════════════╗\n";
-        cout << "║    PARTIDA GUARDADA         ║\n";
-        cout << "╠══════════════════════════════╣\n";
-        cout << "║ 1. Iniciar nueva partida    ║\n";
-        cout << "║ 2. Cargar partida guardada  ║\n";
-        cout << "║ 3. Salir del juego          ║\n";
-        cout << "╚══════════════════════════════╝\n";
-        cout << "Seleccione una opción: ";
-        
+               cout << R"( 
+              --------------------------------------------
+            |            PARTIDA GUARDADA                 |
+            |---------------------------------------------|
+            | 1. Iniciar nueva partida                    |
+            | 2. Cargar partida guardada                  |
+            | 3. Salir del juego                          |
+              -------------------------------------------- 
+Seleccione una opción: )";
         int opcion;
         cin >> opcion;
 
