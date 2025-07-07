@@ -10,11 +10,11 @@ void menu_difficulty(int dif)
     switch (dif)
     {
     case 1: // Easy
-        difficulty.max_rows = 10;
-        difficulty.max_columns = 10;
-        difficulty.max_bombs = 30;
-        difficulty.max_bullets = 10;
-        difficulty.max_shields = 5;
+        difficulty.max_rows = 10; // Sets the maximum number of rows
+        difficulty.max_columns = 10; // Sets the maximum number of columns
+        difficulty.max_bombs = 30; // Sets the maximum number of bombs
+        difficulty.max_bullets = 10; // Sets the maximum number of bullets
+        difficulty.max_shields = 5; // Sets the maximum number of shields
         break;
     case 2: // Medium
         difficulty.max_rows = 20;

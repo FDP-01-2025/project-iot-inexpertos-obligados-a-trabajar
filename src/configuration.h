@@ -5,12 +5,12 @@
 #include <string>
 
 struct SaveLoad{
-    bool game_save;
-    bool game_load;
+    bool game_save; // Save game
+    bool game_load; // Load game
 
     void reset(){
-        game_save = false;
-        game_load = false;
+        game_save = false; // Reset save game
+        game_load = false; // Reset load game
     }
 };
 
