@@ -25,18 +25,21 @@ void pistol_shot(int &turn, bool &lose, bool &bomb_explote)
 {
     if (players[turn].bullets == 0) // If the player has no bullets, he cannot shoot
     {
+        std::cout<< sprites.pistol;
         std::cout << players[turn].name << " no tiene balas, no puede disparar\n";
         return;
     }
 
     if (lose) // If the player loses, he gains 10 points and the bomb explodes
     {
+        std::cout<< sprites.pistol;
         std::cout << players[turn].name << " a hecho explotar una bomba! +10 puntos extra\n";
         players[turn].points += 10;
         bomb_explote = true;
     }
     else // If the player does not lose, he does not gain points
     {
+        std::cout<< sprites.pistol;
         std::cout << players[turn].name << " a desperdiciado una bala!, no gana puntos extra\n";
     }
 
@@ -56,12 +59,14 @@ void shield_action_protection(int &turn, bool &lose, bool &bomb_explote)
 
     if (lose) // If the player loses, he gains 10 points and the bomb explodes
     {
+        std::cout<< sprites.shield;
         std::cout << players[turn].name << " se a protegido de una bomba! +10 puntos extra\n";
         players[turn].points += 10;
         bomb_explote = true;
     }
     else // If the player does not lose, he does not gain points
     {
+        std::cout<< sprites.shield;
         std::cout << players[turn].name << " a gastado un escudo, no gana puntos extra\n";
     }
 
@@ -92,7 +97,7 @@ void player_action(int &turn, bool &lose, bool &bomb_explote) // Performs the ac
         game_data.game_status = false;    
     break;
     default:
-        std::cout << "Accion invalido, usted a perdido\n";
+        std::cout << "Accion inválida, usted a perdido\n";
         players[turn].is_alive = false;
         break;
     }
