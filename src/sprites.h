@@ -25,40 +25,45 @@ struct Sprites
   |_|                                                                      |_| 
  (___)--------------------------------------------------------------------(___)
     )";
-
+    
 std::string menu = R"(
-╔════════════════════════════════════════════╗
-║     BIENVENIDO A: ENCUENTRA EL TESORO      ║
-╠════════════════════════════════════════════╣
-║  1. Jugar modo Solitario                   ║
-║  2. Jugar modo Multijugador                ║
-║  3. Cargar partida                         ║
-║  4. Guardar partida                        ║
-║  5. Salir del juego                        ║
-╚════════════════════════════════════════════╝
+ ____________________________________ 
+|                                    |
+|   **** ENCUENTRA EL TESORO! ****   |
+|------------------------------------|
+|  1. Jugar en modo solitario        |
+|  2. Jugar en modo multijugador     |
+|  3. Cargar partida guardada        |
+|  4. Guardar partida actual         |
+|  5. Salir del juego                |
+|____________________________________|
 Seleccione una opción: )";
 
 
    std::string menu_action_player = R"(
-╔════════════════════════════════════════════════════╗
-║                  ¿Qué desea hacer?                 ║
-╠════════════════════════════════════════════════════╣
-║  1. Excavar                                        ║
-║  2. Protegerse                                     ║
-║  3. Disparar con pistola                           ║
-║  4. Salir del juego y guardar                      ║
-╚════════════════════════════════════════════════════╝
+std::cout << R"(
++-----------------------------------------+
+|           Que desea hacer?              |
++-----------------------------------------+
+|  1. Excavar                             |
+|  2. Protegerse                          |
+|  3. Disparar con pistola                |
+|  4. Salir y guardar partida             |
++-----------------------------------------+
 Opción: )";
 
-   std::string dificulty = R"(
-╔════════════════════════════════════════════════════╗
-║               SELECCIÓN DE DIFICULTAD              ║
-╠════════════════════════════════════════════════════╣
-║  1. Fácil     → Tablero 10x10 - 30 bombas          ║
-║  2. Medio     → Tablero 20x20 - 80 bombas          ║
-║  3. Difícil   → Tablero 30x30 - 100 bombas         ║
-╚════════════════════════════════════════════════════╝
-Seleccione una opción: )";
+
+std::string dificulty = R"(
+ _______________________________________
+|                                       |
+|         Selecciona dificultad:        |
+|---------------------------------------|
+| 1. Facil   (10x10 - 30 bombas)        |
+| 2. Medio   (20x20 - 80 bombas)        |
+| 3. Dificil (30x30 - 100 bombas)       |
+|_______________________________________|
+Opción: )";
+
 
    std::string bomb = R"(
          _.-^^---....,,--       

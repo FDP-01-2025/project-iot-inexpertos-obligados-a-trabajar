@@ -5,11 +5,9 @@
 #include "src/save_load.h"
 #include "src/sprites.h"
 #include <iostream>
-#include <windows.h>
 
 int main()
 {
-    SetConsoleOutputCP(CP_UTF8);
     int opcion;                           // Variable to store the option selected by the user
     std::vector<std::vector<int>> bombXY; // Vector of vectors to store the bomb coordinates
     bool game_on = true;
