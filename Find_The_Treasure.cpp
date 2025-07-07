@@ -7,13 +7,15 @@
 using namespace std;
 
 // Estructura para manejar la dificultad del juego
-struct Difficulty {
+struct Difficulty
+{
     int maxRows;    // Número máximo de filas
     int maxColumns; // Número máximo de columnas
     int maxBombs;   // Número máximo de bombas
     int maxBullets; // Número máximo de balas
     int maxShields; // Número máximo de escudos
-    void reset() {
+    void reset()
+    {
         maxRows = 0;
         maxColumns = 0;
         maxBombs = 0;
@@ -23,14 +25,16 @@ struct Difficulty {
 } difficulty;
 
 // Estructura para manejar información del juego
-struct GameData {
+struct GameData
+{
     int max_players;
     bool game_status = true;
     vector<vector<int>> bomb_explote;
     vector<vector<int>> repeat;
     vector<vector<int>> treasureXY;
 
-    void reset() {
+    void reset()
+    {
         bomb_explote.clear();
         repeat.clear();
         treasureXY.clear();
@@ -38,17 +42,19 @@ struct GameData {
 } game_data;
 
 // Estructura para manejar información de jugadores
-struct Players {
-    string name;    // Nombre del jugador
-    int points;     // Puntos acumulados
-    int bullets;    // Balas disponibles
-    int shields;    // Escudos disponibles
-    bool action_shoot; // Acción de disparar
+struct Players
+{
+    string name;         // Nombre del jugador
+    int points;          // Puntos acumulados
+    int bullets;         // Balas disponibles
+    int shields;         // Escudos disponibles
+    bool action_shoot;   // Acción de disparar
     bool action_protect; // Acción de proteger
-    bool excavate;  // Acción de excavar
-    bool is_alive;  // Indica si el jugador está vivo
+    bool excavate;       // Acción de excavar
+    bool is_alive;       // Indica si el jugador está vivo
 
-    void actions_reset() {
+    void actions_reset()
+    {
         action_shoot = false;
         action_protect = false;
         excavate = false;
@@ -56,13 +62,15 @@ struct Players {
 } players[5];
 
 // Estructura para manejar el estado del juego
-struct ErrorType {
+struct ErrorType
+{
     bool bombExplote;
     bool repeatCoordinate;
     bool outOfRange;
     bool dataTypeInvalid;
 
-    void reset() {
+    void reset()
+    {
         bombExplote = false;
         repeatCoordinate = false;
         outOfRange = false;
@@ -71,18 +79,20 @@ struct ErrorType {
 } error_type;
 
 // Función para guardar datos de los jugadores
-void save_players_data(ofstream &archivo) {
-    archivo << difficulty.maxRows << " " 
-            << difficulty.maxColumns << " " 
+void save_players_data(ofstream &archivo)
+{
+    archivo << difficulty.maxRows << " "
+            << difficulty.maxColumns << " "
             << difficulty.maxBombs << " "
             << difficulty.maxBullets << " "
             << difficulty.maxShields << "\n";
-            
+
     archivo << game_data.max_players << "\n";
-    for (int i = 0; i < game_data.max_players; i++) {
-        archivo << players[i].name << " " 
-                << players[i].points << " " 
-                << players[i].bullets << " " 
+    for (int i = 0; i < game_data.max_players; i++)
+    {
+        archivo << players[i].name << " "
+                << players[i].points << " "
+                << players[i].bullets << " "
                 << players[i].shields << " "
                 << players[i].action_shoot << " "
                 << players[i].action_protect << " "
@@ -92,23 +102,14 @@ void save_players_data(ofstream &archivo) {
 }
 
 // Función para cargar datos de los jugadores
-void load_players_data(ifstream &archivo) {
-    archivo >> difficulty.maxRows 
-            >> difficulty.maxColumns 
-            >> difficulty.maxBombs
-            >> difficulty.maxBullets
-            >> difficulty.maxShields;
-            
+void load_players_data(ifstream &archivo)
+{
+    archivo >> difficulty.maxRows >> difficulty.maxColumns >> difficulty.maxBombs >> difficulty.maxBullets >> difficulty.maxShields;
+
     archivo >> game_data.max_players;
-    for (int i = 0; i < game_data.max_players; i++) {
-        archivo >> players[i].name 
-                >> players[i].points 
-                >> players[i].bullets 
-                >> players[i].shields
-                >> players[i].action_shoot
-                >> players[i].action_protect
-                >> players[i].excavate
-                >> players[i].is_alive;
+    for (int i = 0; i < game_data.max_players; i++)
+    {
+        archivo >> players[i].name >> players[i].points >> players[i].bullets >> players[i].shields >> players[i].action_shoot >> players[i].action_protect >> players[i].excavate >> players[i].is_alive;
     }
 }
 
@@ -377,7 +378,8 @@ bool victory(int points, int playerIndex)
 
     // Crear vector de pares (puntos, nombre) para ordenar
     vector<pair<int, string>> rankings;
-    for (int i = 0; i < game_data.max_players; i++) {
+    for (int i = 0; i < game_data.max_players; i++)
+    {
         rankings.emplace_back(players[i].points, players[i].name);
     }
 
@@ -385,14 +387,18 @@ bool victory(int points, int playerIndex)
     sort(rankings.rbegin(), rankings.rend());
 
     cout << "\n=== TABLA DE POSICIONES ===\n";
-    for (size_t i = 0; i < rankings.size(); i++) {
-        cout << i+1 << ". " << rankings[i].second << ": " << rankings[i].first << " puntos\n";
+    for (size_t i = 0; i < rankings.size(); i++)
+    {
+        cout << i + 1 << ". " << rankings[i].second << ": " << rankings[i].first << " puntos\n";
     }
 
-    if (playerIndex >= 0) {
+    if (playerIndex >= 0)
+    {
         // Mostrar mensaje personalizado para el ganador
         cout << "\n¡FELICIDADES " << players[playerIndex].name << " HAS GANADO!\n";
-    } else {
+    }
+    else
+    {
         cout << "\n¡HAS GANADO!\n";
     }
 
@@ -403,7 +409,8 @@ bool victory(int points, int playerIndex)
     cout << "\n¿Desea jugar otra partida? (1=Sí, 0=No): ";
     int opcion;
     cin >> opcion;
-    if (opcion == 1) {
+    if (opcion == 1)
+    {
         vector<vector<int>> newBombXY;
         reset_game_state(newBombXY);
         game_menu();
@@ -412,15 +419,22 @@ bool victory(int points, int playerIndex)
     return true;
 }
 
-// Función para guardar la partida (VERSIÓN CORREGIDA)
+/*
+ * Guarda el estado actual del juego en un archivo dentro de la carpeta 'partidas_guardadas/'
+ * - Crea automáticamente la carpeta si no existe
+ * - Permite hasta 3 partidas guardadas (sobrescribiendo si es necesario)
+ * - Los archivos se nombran como 'partida1.txt', 'partida2.txt', etc
+ * - Función para guardar la partida (VERSIÓN CORREGIDA)
+ */
+
 void save_game(const vector<vector<int>> &bombXY)
 {
-    // Crear directorio de guardado si no existe
-    #ifdef _WIN32
-        system("mkdir partidas_guardadas 2>nul");
-    #else
-        system("mkdir -p partidas_guardadas");
-    #endif
+// Crear directorio de guardado si no existe
+#ifdef _WIN32
+    system("mkdir partidas_guardadas 2>nul");
+#else
+    system("mkdir -p partidas_guardadas");
+#endif
 
     vector<string> existingFiles;
     for (int i = 1; i <= 3; i++)
@@ -528,12 +542,19 @@ void save_game(const vector<vector<int>> &bombXY)
     cout << "\nPartida guardada correctamente en: " << filename << "\n";
 
     // Mostrar menú post-guardado
-    if (show_post_save_menu()) {
+    if (show_post_save_menu())
+    {
         exit(0);
     }
 }
 
-// Función para cargar una partida guardada
+/**
+ * Carga una partida guardada desde la carpeta 'partidas_guardadas/'
+ * - Muestra una lista de partidas disponibles
+ * - Si no hay archivos guardados, informa al usuario
+ * - Función para cargar una partida guardada
+ */
+
 void load_game(vector<vector<int>> &bombXY)
 {
     cout << "\n=== PARTIDAS GUARDADAS ===\n";
@@ -684,7 +705,10 @@ void print_board()
     cout << "Leyenda: # = Sin explorar, $ = Tesoro, ! = Bomba, . = Explorado\n";
 }
 
-// Función para mostrar el menú principal del juego
+/*
+ * - Función para mostrar el menú principal del juego
+ * -Las partidas se guardan automáticamente en 'partidas_guardadas/' dentro del directorio del juego*/
+
 int game_menu()
 {
     int opcion;
@@ -867,7 +891,7 @@ void player_configuration()
         {
             cout << "Nombre del jugador " << i + 1 << " (máx 20 caracteres, sin espacios): ";
             cin >> players[i].name;
-            
+
             // Validar el nombre
             if (players[i].name.empty())
             {
@@ -881,12 +905,12 @@ void player_configuration()
             {
                 validName = true;
             }
-            
+
             // Limpiar el buffer de entrada en caso de errores
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-        
+
         players[i].points = 0;
         players[i].bullets = difficulty.maxBullets;
         players[i].shields = difficulty.maxShields;
@@ -894,7 +918,7 @@ void player_configuration()
         players[i].action_protect = false;
         players[i].excavate = false;
         players[i].is_alive = true;
-        
+
         cout << "Jugador " << players[i].name << " creado con éxito!\n";
     }
 }
@@ -905,7 +929,7 @@ void reset_game_state(vector<vector<int>> &bombXY)
     game_data.reset();
     error_type.reset();
     bombXY.clear();
-    
+
     for (int i = 0; i < 5; i++)
     {
         players[i].name = "";
@@ -917,7 +941,7 @@ void reset_game_state(vector<vector<int>> &bombXY)
         players[i].excavate = false;
         players[i].is_alive = false;
     }
-    
+
     difficulty.reset();
 }
 
@@ -1023,7 +1047,7 @@ bool show_post_save_menu()
     system("cls");
     while (true)
     {
-               cout << R"( 
+        cout << R"( 
               --------------------------------------------
             |            PARTIDA GUARDADA                 |
             |---------------------------------------------|
