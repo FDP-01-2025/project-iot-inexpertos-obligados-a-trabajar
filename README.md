@@ -142,22 +142,6 @@ Cada jugador realiza un turno y elige una acción:
 | `reset_game_state()`     | Reinicia el juego y limpia estructuras de estado                            |
 | `sprite(type)`           | Imprime sprites ASCII del tipo solicitado (`Title`, `Bomb`, `Winner`, etc.) |
 
----
-
-## ✅ Requisitos
-
-* Sistema con compilador C++11 o superior
-* En Windows, se recomienda usar `g++` de MinGW o compilador de Visual Studio
-
----
-
-## 🧪 Ejemplo de Compilación (en terminal)
-
-```bash
-g++ main.cpp -o tesoro.exe
-./tesoro.exe
-```
-
 ## Estructuras de Control Utilizadas
 
 Este proyecto utiliza estructuras de control fundamentales en C++, las cuales facilitan el desarrollo de una lógica de juego robusta y flexible. Para mejorar la comprensión, no se incluyeron fragmentos completos del código ni funciones directamente, en su lugar, se optó por simplificarlas y presentar ejemplos claros.
@@ -238,6 +222,20 @@ void print_board() {
 Estas funciones mejoran la legibilidad y mantenimiento del código.
 
 ---
+
+## ✅ Requisitos
+
+* Sistema con compilador C++11 o superior
+* En Windows, se recomienda usar `g++` de MinGW o compilador de Visual Studio
+
+---
+
+## 🧪 Ejemplo de Compilación (en terminal)
+
+```bash
+g++ main.cpp -o tesoro.exe
+./tesoro.exe
+```
 
 ## Equipo
 
