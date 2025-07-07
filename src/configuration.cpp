@@ -5,6 +5,7 @@ Players players[4]; // Array of players
 GameData game_data; // Game data
 Difficulty difficulty; // Difficulty
 ErrorType error_type; // Error type
+SaveLoad save_load;
 
 void reset_game(std::vector<std::vector<int>> &bombXY)
 {

@@ -112,18 +112,23 @@ void game(std::vector<std::vector<int>> &bombXY)
                     return;
                 }
 
-                if (lose && !players[turn].action_shoot && !players[turn].action_protect)
+                if (lose)
                 {
-                    game_over_message(); // Shows the game over message
-                    players[turn].is_alive = false;
-                    game_data.bomb_explote.push_back(coordinate);
-                    std::cout << players[turn].name << " pierde!\n"; // Shows the player who lost
+                    if (!players[turn].action_shoot && !players[turn].action_protect && error_type.bomb_explote)
+                    {
+                        game_over_message(); // Shows the game over message
+                        players[turn].is_alive = false;
+                        std::cout << players[turn].name << " pierde!\n"; // Shows the player who lost
+                    }else if(error_type.out_of_range || error_type.repeat_coordinate){
+                        game_over_message(); // Shows the game over message
+                        players[turn].is_alive = false;
+                        std::cout << players[turn].name << " pierde!\n"; // Shows the player who lost
+                    }
                 }
                 else if (!bomb_explote && (players[turn].action_shoot || players[turn].action_protect || players[turn].excavate))
                 {
                     // If the coordinate is valid
                     players[turn].points += 20;
-                    game_data.treasure_XY.push_back(coordinate);
                     std::cout << "¡Tesoro encontrado! +20 puntos\n";
                 }
 

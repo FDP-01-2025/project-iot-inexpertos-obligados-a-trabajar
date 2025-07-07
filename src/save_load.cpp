@@ -190,6 +190,7 @@ void load_game(std::vector<std::vector<int>> &bombXY)
     if (availableFiles.empty())
     {
         std::cout << "No hay partidas guardadas disponibles.\n";
+        save_load.game_load = false;
         return;
     }
 
@@ -209,11 +210,9 @@ void load_game(std::vector<std::vector<int>> &bombXY)
     if (!archivo)
     {
         std::cout << "Error al abrir el archivo.\n";
+        save_load.game_load = false;
         return;
     }
-
-    // Reset del estado del juego (implementado en otro archivo)
-    // reset_game_state(bombXY);
 
     load_players_data(archivo);
 
@@ -240,13 +239,10 @@ void load_game(std::vector<std::vector<int>> &bombXY)
         !loadCoordinates(game_data.treasure_XY))
     {
         std::cout << "Error leyendo datos de partida.\n";
-        // reset_game_state(bombXY);
         return;
     }
 
     archivo.close();
     std::cout << "Partida cargada exitosamente desde " << selectedFile << "\n";
-
-    // print_board();
-    // game_multiplayer(bombXY);
+    save_load.game_load = true;
 }

@@ -4,6 +4,18 @@
 #include <vector>
 #include <string>
 
+struct SaveLoad{
+    bool game_save;
+    bool game_load;
+
+    void reset(){
+        game_save = false;
+        game_load = false;
+    }
+};
+
+extern SaveLoad save_load;
+
 struct Players
 {
     std::string name; // Name of the player

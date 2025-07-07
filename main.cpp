@@ -65,7 +65,10 @@ int main()
         {
             reset_game(bombXY);
             load_game(bombXY);
-            game(bombXY);
+            if(save_load.game_load){
+                game(bombXY);
+                save_load.reset();
+            }
         }
         else if (opcion == 4)
         {
