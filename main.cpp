@@ -3,87 +3,79 @@
 #include "src/players.h"
 #include "src/configuration.h"
 #include "src/save_load.h"
+#include "src/sprites.h"
 #include <iostream>
+#include <windows.h>
 
 int main()
 {
-
-    int opcion; // Variable to store the option selected by the user
+    SetConsoleOutputCP(CP_UTF8);
+    int opcion;                           // Variable to store the option selected by the user
     std::vector<std::vector<int>> bombXY; // Vector of vectors to store the bomb coordinates
+    bool game_on = true;
+    int dif;
 
-    while (true)
+    std::cout << sprites.title;
+
+    while (game_on)
     {
-
-        // std::cout << sprites.menu;
+        std::cout << sprites.menu;
         std::cin >> opcion; // Reads the option selected by the user
 
-        if (opcion == 1)
+        switch (opcion)
         {
+        case 1:
             reset_game(bombXY);
             game_data.max_players = 1; // Sets the number of players to 1
 
-            int dif;
-            std::cout << "\nSelecciona dificultad:\n";
-            std::cout << "1. Fácil (10x10 - 30 bombas)\n";
-            std::cout << "2. Medio (20x20 - 80 bombas)\n";
-            std::cout << "3. Difícil (30x30 - 100 bombas)\n";
-            std::cout << "Opción: ";
+            std::cout << sprites.dificulty;
             std::cin >> dif; // Reads the difficulty selected by the user
 
             menu_difficulty(dif);                // Sets the difficulty
             bombXY = random_coordinates(bombXY); // Generates random coordinates for the bombs
             player_configuration();              // Configures the players
-            game(bombXY);                        // Plays the game
-        }
-        else if (opcion == 2)
-        {
+            game(bombXY);
+            break;
+        case 2:
             reset_game(bombXY);
 
-            int dif;
-            std::cout << "\nSelecciona dificultad para Multijugador:\n";
-            std::cout << "1. Fácil (10x10 - 30 bombas)\n";
-            std::cout << "2. Medio (20x20 - 80 bombas)\n";
-            std::cout << "3. Difícil (30x30 - 100 bombas)\n";
-            std::cout << "Opción: ";
+            std::cout << sprites.dificulty;
             std::cin >> dif;
 
-            std::cout << "\n¿Con cuántos jugadores deseas jugar? (1-4): ";
+            std::cout << "\n¿Con cuantos jugadores deseas jugar? (1-4): ";
             std::cin >> game_data.max_players;
 
             if (game_data.max_players < 1 || game_data.max_players > 4) // Checks if the number of players is valid
             {
-                std::cout << "Número de jugadores inválido. Debe ser entre 1 y 4.\n";
+                std::cout << "Numero de jugadores invalido. Debe ser entre 1 y 4.\n";
                 continue;
             }
 
             menu_difficulty(dif);                // Sets the difficulty
             player_configuration();              // Configures the players
             bombXY = random_coordinates(bombXY); // Generates random coordinates for the bombs
-            game(bombXY);                        // Plays the game
-        }
-        else if (opcion == 3)
-        {
+            game(bombXY);
+            break;
+        case 3:
             reset_game(bombXY);
             load_game(bombXY);
-            if(save_load.game_load){
+            if (save_load.game_load)
+            {
                 game(bombXY);
                 save_load.reset();
             }
-        }
-        else if (opcion == 4)
-        {
+            break;
+        case 4:
             save_game(bombXY);
-        }
-        else if (opcion == 5)
-        {
+            break;
+        case 5:
             std::cout << "¡Gracias por jugar! Hasta la próxima.\n"; // Shows the goodbye message
+            game_on = false;
+            break;
+        default:
+            std::cout << "Opción no valida. Intenta de nuevo.\n"; // Shows the invalid option message
             break;
         }
-        else
-        {
-            std::cout << "Opción no válida. Intenta de nuevo.\n"; // Shows the invalid option message
-        }
+        return 0;
     }
-
-    return 0;
 }

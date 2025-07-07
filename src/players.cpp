@@ -2,6 +2,7 @@
 #include "game.h"
 #include "configuration.h"
 #include "save_load.h"
+#include "sprites.h"
 #include <iostream>
 
 void player_configuration() // Configures the players
@@ -72,7 +73,7 @@ void shield_action_protection(int &turn, bool &lose, bool &bomb_explote)
 void player_action(int &turn, bool &lose, bool &bomb_explote) // Performs the action of the player
 {
     int action; // Action of the player
-    std::cout << "¿Que desea hacer? (1=Excavar, 2=Protegerse, 3=Disparar con pistola): "; // Prints the action of the player
+    std::cout << sprites.menu_action_player; // Prints the action of the player
     std::cin >> action;
     switch (action)
     {
@@ -86,8 +87,7 @@ void player_action(int &turn, bool &lose, bool &bomb_explote) // Performs the ac
     case 3: // action_shoot with pistol
         pistol_shot(turn, lose, bomb_explote); // Performs the action of the player
         break;
-    case 4:
-        std::cout << "Hola";     
+    case 4:  
         game_data.game_status = false;    
     break;
     default:

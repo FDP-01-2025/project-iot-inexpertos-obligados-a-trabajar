@@ -5,7 +5,7 @@
 
 struct Sprites
 {
-    std::string title = R"(
+   std::string title = R"(
 
   ___                                                                      ___ 
  ( _ )--------------------------------------------------------------------( _ )
@@ -27,31 +27,43 @@ struct Sprites
  (___)--------------------------------------------------------------------(___)
     )";
 
-    std::string menu = R"(
- ____________________________________ 
-|                                    |
-|   **** ENCUENTRA EL TESORO ****    |
-|------------------------------------|
-|  1. Jugar modo Solitario           |
-|  2. Jugar modo Multijugador        |
-|  3. Cargar partida                 |
-|  4. Guardar partida                |
-|  5. Salir del juego                |
-|____________________________________|
+std::string menu = R"(
+╔════════════════════════════════════════════╗
+║     BIENVENIDO A: ENCUENTRA EL TESORO      ║
+╠════════════════════════════════════════════╣
+║  1. Jugar modo Solitario                   ║
+║  2. Jugar modo Multijugador                ║
+║  3. Cargar partida                         ║
+║  4. Guardar partida                        ║
+║  5. Salir del juego                        ║
+╚════════════════════════════════════════════╝
 Seleccione una opción: )";
 
-    std::string dificulty = R"(
- _______________________________________
-|                                       |
-|        Selecciona dificultad:         |
-|---------------------------------------|
-| 1. Fácil (10x10 - 30 bombas)          |
-| 2. Medio (20x20 - 80 bombas)          |
-| 3. Difícil (30x30 - 100 bombas)       |
-|_______________________________________|
+
+   std::string menu_action_player = R"(std::cout << R"(
+std::cout << R"(
+╔════════════════════════════════════════════════════╗
+║                  ¿Qué desea hacer?                 ║
+╠════════════════════════════════════════════════════╣
+║  1. Excavar                                        ║
+║  2. Protegerse                                     ║
+║  3. Disparar con pistola                           ║
+║  4. Salir del juego y guardar                      ║
+╚════════════════════════════════════════════════════╝
 Opción: )";
 
-    std::string bomb = R"(
+   std::string dificulty = R"(
+std::string dificulty = R"(
+╔════════════════════════════════════════════════════╗
+║               SELECCIÓN DE DIFICULTAD              ║
+╠════════════════════════════════════════════════════╣
+║  1. Fácil     → Tablero 10x10 - 30 bombas          ║
+║  2. Medio     → Tablero 20x20 - 80 bombas          ║
+║  3. Difícil   → Tablero 30x30 - 100 bombas         ║
+╚════════════════════════════════════════════════════╝
+Seleccione una opción: )";
+
+   std::string bomb = R"(
          _.-^^---....,,--       
      _--                  --_  
     <                        >)
@@ -65,7 +77,7 @@ Opción: )";
      _____.,-#%&$@%#&#~,._____
         )";
 
-    std::string treasure = R"(
+   std::string treasure = R"(
        /\
       /  \
      /    \
@@ -76,7 +88,7 @@ Opción: )";
        \/
     )";
 
-    std::string shield = R"(
+   std::string shield = R"(
        _,--`--,_
      ,'    _    `.
     /    _/ \_    \
@@ -88,7 +100,7 @@ Opción: )";
        `-.____.-'
         )";
 
-    std::string pistol = R"(
+   std::string pistol = R"(
         _______ 
        /       \__________________________________
       /        |                                 |
@@ -100,14 +112,14 @@ Opción: )";
         |_____|
 )";
 
-    std::string gameOver = R"(
+   std::string gameOver = R"(
    __________________________
   /                         /
  /        GAME OVER        /
 /_________________________/
 )";
 
-    std::string winner = R"(
+   std::string winner = R"(
             .-===========-. 
          (                  )
           |       #1       |
@@ -127,7 +139,7 @@ Opción: )";
                '-____-'
     )";
 
-    std::string explosion = R"(
+   std::string explosion = R"(
        .-^---.
      .'       `.
     /           \
