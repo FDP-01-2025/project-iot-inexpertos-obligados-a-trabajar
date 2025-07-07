@@ -109,7 +109,7 @@ void game(std::vector<std::vector<int>> &bombXY)
 
                 if (!game_data.game_status)
                 {
-                    break;
+                    return;
                 }
 
                 if (lose && !players[turn].action_shoot && !players[turn].action_protect)
@@ -142,11 +142,6 @@ void game(std::vector<std::vector<int>> &bombXY)
 
                 players[turn].actions_reset(); // Resets the actions of the player
             }
-        }
-
-        if (!game_data.game_status)
-        {
-            break;
         }
 
         game_data.game_status = false; // Sets the game status to false
