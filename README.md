@@ -147,11 +147,11 @@ A continuación se muestran capturas del juego:
 | `game_over_message()`       | Muestra el mensaje de error y la razón por la que ha perdido                | `game.cpp`          |
 | `prove_coordinates()`       | Verifica si se pisa bomba, tesoro, fuera de rango, etc.                     | `game.cpp`          |
 | `victory()`                 | Muestra la pantalla de victoria y tabla de puntos                           | `game.cpp`          |
+| `random_coordinates()`      | Genera las coordenadas aleatorias                                           | `game.cpp`          |
 | `player_configuration()`    | Configura nombre y recursos iniciales de los jugadores                      | `player.cpp`        |
 | `pistol_shot()`             | Acción de disparar                                                          | `player.cpp`        |
 | `player_action()`           | Crea un menú para que el jugador seleccione una acción                      | `player.cpp`        |
 | `shield_action_protection()`| Acción de proteger                                                          | `player.cpp`        |
-| `random_coordinates()`      | Genera las coordenadas aleatorias                                           | `random_coordinates`|
 | `save_game()`               | Guarda partida en un archivo dentro de `/partidas_guardadas/`               | `save_load.cpp`     |
 | `load_game()`               | Carga una partida guardada                                                  | `save_load.cpp`     |
 | `sprite(type)`              | Imprime sprites ASCII del tipo solicitado (`Title`, `Bomb`, `Winner`, etc.) | `sprites.cpp`       |
