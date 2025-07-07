@@ -71,11 +71,6 @@ std::vector<std::vector<int>> random_coordinates(std::vector<std::vector<int>> &
         }
     }
 
-    for (int i = 0; i < bombXY.size(); i++)
-    {
-        std::cout << "X: " << bombXY[i][0] << " Y: " << bombXY[i][1] << std::endl;
-    }
-
     return bombXY; // Returns the vector of bomb coordinates
 }
 

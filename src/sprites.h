@@ -40,8 +40,7 @@ std::string menu = R"(
 Seleccione una opción: )";
 
 
-   std::string menu_action_player = R"(std::cout << R"(
-std::cout << R"(
+   std::string menu_action_player = R"(
 ╔════════════════════════════════════════════════════╗
 ║                  ¿Qué desea hacer?                 ║
 ╠════════════════════════════════════════════════════╣

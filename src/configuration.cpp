@@ -9,6 +9,7 @@ SaveLoad save_load;
 
 void reset_game(std::vector<std::vector<int>> &bombXY)
 {
+    save_load.reset();
     game_data.reset(); // Resets the game data
     difficulty.reset(); // Resets the difficulty
     error_type.reset(); // Resets the error type

@@ -88,6 +88,7 @@ void player_action(int &turn, bool &lose, bool &bomb_explote) // Performs the ac
         pistol_shot(turn, lose, bomb_explote); // Performs the action of the player
         break;
     case 4:  
+        save_load.game_save = true;
         game_data.game_status = false;    
     break;
     default:

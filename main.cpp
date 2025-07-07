@@ -66,7 +66,12 @@ int main()
             }
             break;
         case 4:
-            save_game(bombXY);
+            if(save_load.game_save){
+                save_game(bombXY);
+                save_load.game_save = false;
+            }else{
+                std::cout << "¡No a iniciado una partida!";
+            }
             break;
         case 5:
             std::cout << "¡Gracias por jugar! Hasta la próxima.\n"; // Shows the goodbye message
@@ -76,6 +81,7 @@ int main()
             std::cout << "Opción no valida. Intenta de nuevo.\n"; // Shows the invalid option message
             break;
         }
-        return 0;
     }
+
+    return 0;
 }
