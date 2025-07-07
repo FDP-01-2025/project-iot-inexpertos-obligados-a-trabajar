@@ -68,7 +68,7 @@ struct Sprites
     "|" "\033[1;32m" " 3. Dificil (30x30 - 100 bombas)       " "\033[97m" "|\n"
     "|" "\033[97m" "_______________________________________|\n"
     "\033[0m"
-"Opcion: )";
+"Opcion: ";
 
    std::string bomb =
        // Brown

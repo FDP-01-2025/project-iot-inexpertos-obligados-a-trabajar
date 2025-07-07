@@ -40,20 +40,20 @@ void game_over_message() // Shows the error message
     if (error_type.bomb_explote) // Checks if the error type is bomb explosion
     {
         std::cout<<sprites.explosion;
-        std::cout << "¡Has pisado una bomba!\n";
+        std::cout << "Has pisado una bomba!\n";
         std::cout<<sprites.gameOver;
     }
     else if (error_type.repeat_coordinate) // Checks if the error type is repeat coordinate
     {
-        std::cout << "¡Coordenada repetida! No es válido.\n";
+        std::cout << "Coordenada repetida! No es valido.\n";
     }
     else if (error_type.out_of_range) // Checks if the error type is out of range
     {
-        std::cout << "¡Coordenada fuera del rango establecido!\n";
+        std::cout << "Coordenada fuera del rango establecido!\n";
     }
     else if (error_type.data_type_invalid) // Checks if the error type is data type invalid
     {
-        std::cout << "Dato inválido. Debe ingresar un número entero dentro del rango.\n";
+        std::cout << "Dato invalido. Debe ingresar un numero entero dentro del rango.\n";
     }
 }
 
@@ -125,9 +125,9 @@ bool victory(int points, int playerIndex)
     if (playerIndex >= 0) {
         // show a personalized message to the player who won
         std::cout<<sprites.winner;
-        std::cout << "\n¡FELICIDADES " << players[playerIndex].name << " HAS GANADO!\n";
+        std::cout << "\nFELICIDADES " << players[playerIndex].name << " HAS GANADO!\n";
     } else {
-        std::cout << "\n¡HAS GANADO!\n";
+        std::cout << "\nHAS GANADO!\n";
     }
 
     std::cout << "Puntos finales: " << points << "\n";// Displays final score
