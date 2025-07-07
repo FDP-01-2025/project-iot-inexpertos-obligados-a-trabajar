@@ -2,6 +2,7 @@
 #include "src/interface.h"
 #include "src/players.h"
 #include "src/configuration.h"
+#include "src/save_load.h"
 #include <iostream>
 
 int main()
@@ -62,12 +63,13 @@ int main()
         }
         else if (opcion == 3)
         {
-            // load_game(bombXY);
-            print_board(); // Prints the board
+            reset_game(bombXY);
+            load_game(bombXY);
+            game(bombXY);
         }
         else if (opcion == 4)
         {
-            // save_game(bombXY);
+            save_game(bombXY);
         }
         else if (opcion == 5)
         {
