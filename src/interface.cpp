@@ -107,6 +107,11 @@ void game(std::vector<std::vector<int>> &bombXY)
 
                 player_action(turn, lose, bomb_explote); // Performs the action of the player
 
+                if (!game_data.game_status)
+                {
+                    break;
+                }
+
                 if (lose && !players[turn].action_shoot && !players[turn].action_protect)
                 {
                     game_over_message(); // Shows the game over message
@@ -137,6 +142,11 @@ void game(std::vector<std::vector<int>> &bombXY)
 
                 players[turn].actions_reset(); // Resets the actions of the player
             }
+        }
+
+        if (!game_data.game_status)
+        {
+            break;
         }
 
         game_data.game_status = false; // Sets the game status to false

@@ -3,11 +3,6 @@
 #include <iostream>
 #include <algorithm>
 
-// Variables externas (definidas en otro archivo)
-extern Difficulty difficulty;
-extern GameData game_data;
-extern Players players[5];
-
 void save_players_data(std::ofstream &archivo)
 {
     archivo << difficulty.max_rows << " "

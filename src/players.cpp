@@ -1,6 +1,7 @@
 #include "players.h"
 #include "game.h"
 #include "configuration.h"
+#include "save_load.h"
 #include <iostream>
 
 void player_configuration() // Configures the players
@@ -85,6 +86,10 @@ void player_action(int &turn, bool &lose, bool &bomb_explote) // Performs the ac
     case 3: // action_shoot with pistol
         pistol_shot(turn, lose, bomb_explote); // Performs the action of the player
         break;
+    case 4:
+        std::cout << "Hola";     
+        game_data.game_status = false;    
+    break;
     default:
         std::cout << "Acción inválid, usted a perdido\n";
         players[turn].is_alive = false;
