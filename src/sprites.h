@@ -3,6 +3,20 @@
 
 #include <string>
 
-std::string sprite(std::string typeSprite);
+struct Sprites
+{
+    std::string title;
+    std::string menu;
+    std::string dificulty;
+    std::string bomb;
+    std::string treasure;
+    std::string shield;
+    std::string pistol;
+    std::string gameOver;
+    std::string winner;
+    std::string explosion;
+};
+
+extern Sprites sprites;
 
 #endif
