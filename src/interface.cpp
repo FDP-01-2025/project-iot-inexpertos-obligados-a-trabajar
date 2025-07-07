@@ -59,15 +59,15 @@ void print_board()
             // Prints the corresponding symbol
             if (bomb_coordinate)
             {
-                std::cout << " ! ";
+                std::cout << "\033[31m ! \033[0m";
             }
             else if (treasure_coordinate)
             {
-                std::cout << " $ ";
+                std::cout << "\033[92m $ \033[0m";
             }
             else
             {
-                std::cout << " # ";
+               std::cout << "\033[33m # \033[0m";
             }
         }
         std::cout << std::endl;
@@ -138,15 +138,12 @@ void game(std::vector<std::vector<int>> &bombXY)
 
                 if (players[turn].points >= 60 && players[turn].is_alive)
                 { // If the player has more than 60 points and is alive
-                    std::cout << "Desea retirarse? (1=Si, 0=No): ";
+                    std::cout << "¿Desea retirarse? (1=Sí, 0=No): ";
                     std::cin >> retire;
                     if (retire == 1)
                     { // If the player wants to retire
                         players[turn].is_alive = false;
                         players[turn].points += 40;
-                    }else if(retire != 1 && retire != 0){
-                        std::cout << players[turn].name << " por graciosito pierde!\n";
-                        players[turn].is_alive = false;
                     }
                 }
 
