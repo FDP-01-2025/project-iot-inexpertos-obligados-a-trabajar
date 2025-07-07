@@ -1,6 +1,6 @@
 #include "game.h"
-#include "players.h"
 #include "configuration.h"
+#include "interface.h"
 #include "sprites.h"
 #include <algorithm>
 #include <iostream>
@@ -110,10 +110,10 @@ bool prove_coordinates(const std::vector<int> &coordinate, const std::vector<std
 }
 bool victory(int points, int playerIndex)
 {
-    sprite("Winner");
+    sprites.winner;
 
     // creates a vector in pairs of(points,name) to organize it
-    vector<pair<int, string>> rankings;
+    std::vector<std::pair<int, std::string>> rankings;
     for (int i = 0; i < game_data.max_players; i++) {
         rankings.emplace_back(players[i].points, players[i].name);// Adds player data to the ranking vector
     }
@@ -121,27 +121,27 @@ bool victory(int points, int playerIndex)
     // Sorts from highest to lowest
     sort(rankings.rbegin(), rankings.rend());
 
-    cout << "\n=== TABLA DE POSICIONES ===\n";// Prints scoreboard
+    std::cout << "\n=== TABLA DE POSICIONES ===\n";// Prints scoreboard
     for (size_t i = 0; i < rankings.size(); i++) {
-        cout << i+1 << ". " << rankings[i].second << ": " << rankings[i].first << " puntos\n";
+        std::cout << i+1 << ". " << rankings[i].second << ": " << rankings[i].first << " puntos\n";
     }
 
     if (playerIndex >= 0) {
         // show a personalized message to the player who won
-        cout << "\n¡FELICIDADES " << players[playerIndex].name << " HAS GANADO!\n";
+        std::cout << "\n¡FELICIDADES " << players[playerIndex].name << " HAS GANADO!\n";
     } else {
-        cout << "\n¡HAS GANADO!\n";
+        std::cout << "\n¡HAS GANADO!\n";
     }
 
-    cout << "Puntos finales: " << points << "\n";// Displays final score
+    std::cout << "Puntos finales: " << points << "\n";// Displays final score
     print_board();// Prints the final game board
 
     // asks if wants to play again
-    cout << "\n¿Desea jugar otra partida? (1=Sí, 0=No): ";
+    std::cout << "\n¿Desea jugar otra partida? (1=Sí, 0=No): ";
     int opcion;
-    cin >> opcion;
+    std::cin >> opcion;
     if (opcion == 1) {
-        vector<vector<int>> newBombXY;// Creates a new bomb coordinate vector
+        std::vector<std::vector<int>> newBombXY;// Creates a new bomb coordinate vector
         reset_game(newBombXY);// Resets the game with new bombs
     }
 
