@@ -6,7 +6,6 @@
 struct Sprites
 {
    std::string title = R"(
-
   ___                                                                      ___ 
  ( _ )--------------------------------------------------------------------( _ )
   | |                                                                      | | 
@@ -52,7 +51,6 @@ Seleccione una opción: )";
 Opción: )";
 
    std::string dificulty = R"(
-std::string dificulty = R"(
 ╔════════════════════════════════════════════════════╗
 ║               SELECCIÓN DE DIFICULTAD              ║
 ╠════════════════════════════════════════════════════╣
