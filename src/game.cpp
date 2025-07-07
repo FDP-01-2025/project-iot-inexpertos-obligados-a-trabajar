@@ -112,38 +112,37 @@ bool victory(int points, int playerIndex)
 {
     sprite("Winner");
 
-    // Crear vector de pares (puntos, nombre) para ordenar
+    // creates a vector in pairs of(points,name) to organize it
     vector<pair<int, string>> rankings;
     for (int i = 0; i < game_data.max_players; i++) {
-        rankings.emplace_back(players[i].points, players[i].name);
+        rankings.emplace_back(players[i].points, players[i].name);// Adds player data to the ranking vector
     }
 
-    // Ordenar de mayor a menor
+    // Sorts from highest to lowest
     sort(rankings.rbegin(), rankings.rend());
 
-    cout << "\n=== TABLA DE POSICIONES ===\n";
+    cout << "\n=== TABLA DE POSICIONES ===\n";// Prints scoreboard
     for (size_t i = 0; i < rankings.size(); i++) {
         cout << i+1 << ". " << rankings[i].second << ": " << rankings[i].first << " puntos\n";
     }
 
     if (playerIndex >= 0) {
-        // Mostrar mensaje personalizado para el ganador
+        // show a personalized message to the player who won
         cout << "\n¡FELICIDADES " << players[playerIndex].name << " HAS GANADO!\n";
     } else {
         cout << "\n¡HAS GANADO!\n";
     }
 
-    cout << "Puntos finales: " << points << "\n";
-    print_board();
+    cout << "Puntos finales: " << points << "\n";// Displays final score
+    print_board();// Prints the final game board
 
-    // Preguntar si quiere jugar otra partida
+    // asks if wants to play again
     cout << "\n¿Desea jugar otra partida? (1=Sí, 0=No): ";
     int opcion;
     cin >> opcion;
     if (opcion == 1) {
-        vector<vector<int>> newBombXY;
-        reset_game_state(newBombXY);
-        game_menu();
+        vector<vector<int>> newBombXY;// Creates a new bomb coordinate vector
+        reset_game(newBombXY);// Resets the game with new bombs
     }
 
     return true;
