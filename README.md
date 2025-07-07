@@ -96,7 +96,7 @@ Cada jugador realiza un turno y elige una acción:
 A continuación se muestran capturas del juego:
 
 ![alt text](Resources/image.png)
-![alt text](Resources/image_2.pngS)
+![alt text](Resources/image_2.png)
 ![alt text](Resources/image_3.png)
 
 ---
