@@ -52,17 +52,17 @@ void save_game(const std::vector<std::vector<int>> &bombXY)
 
     if (existingFiles.size() >= 3)
     {
-        std::cout << "\n¡Límite de 3 partidas guardadas alcanzado!\n";
+        std::cout << "\nLimite de 3 partidas guardadas alcanzado!\n";
         std::cout << "Partidas existentes:\n";
         for (size_t i = 0; i < existingFiles.size(); i++)
         {
             std::cout << i + 1 << ". " << existingFiles[i] << "\n";
         }
 
-        std::cout << "Elija una opción:\n";
+        std::cout << "Elija una opcion:\n";
         std::cout << "1. Sobrescribir una partida existente\n";
         std::cout << "2. Cancelar guardado\n";
-        std::cout << "Opción: ";
+        std::cout << "Opcion: ";
         int opcion;
         std::cin >> opcion;
 
@@ -72,13 +72,13 @@ void save_game(const std::vector<std::vector<int>> &bombXY)
             return;
         }
 
-        std::cout << "Seleccione el número de partida a sobrescribir (1-3): ";
+        std::cout << "Seleccione el numero de partida a sobrescribir (1-3): ";
         int seleccion;
         std::cin >> seleccion;
 
         if (seleccion < 1 || seleccion > 3)
         {
-            std::cout << "Opción inválida. Guardado cancelado.\n";
+            std::cout << "Opcion invalida. Guardado cancelado.\n";
             return;
         }
 
@@ -194,13 +194,13 @@ void load_game(std::vector<std::vector<int>> &bombXY)
         return;
     }
 
-    std::cout << "Seleccione el número de partida a cargar (1-" << availableFiles.size() << "): ";
+    std::cout << "Seleccione el numero de partida a cargar (1-" << availableFiles.size() << "): ";
     int selected;
     std::cin >> selected;
 
     if (selected < 1 || selected > availableFiles.size())
     {
-        std::cout << "Opción inválida.\n";
+        std::cout << "Opcion invalida.\n";
         return;
     }
 

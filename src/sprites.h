@@ -37,11 +37,10 @@ std::string menu = R"(
 |  4. Guardar partida actual         |
 |  5. Salir del juego                |
 |____________________________________|
-Seleccione una opción: )";
+Seleccione una opcion: )";
 
 
    std::string menu_action_player = R"(
-std::cout << R"(
 +-----------------------------------------+
 |           Que desea hacer?              |
 +-----------------------------------------+
@@ -50,7 +49,7 @@ std::cout << R"(
 |  3. Disparar con pistola                |
 |  4. Salir y guardar partida             |
 +-----------------------------------------+
-Opción: )";
+Opcion: )";
 
 
 std::string dificulty = R"(
@@ -62,7 +61,7 @@ std::string dificulty = R"(
 | 2. Medio   (20x20 - 80 bombas)        |
 | 3. Dificil (30x30 - 100 bombas)       |
 |_______________________________________|
-Opción: )";
+Opcion: )";
 
 
    std::string bomb = R"(

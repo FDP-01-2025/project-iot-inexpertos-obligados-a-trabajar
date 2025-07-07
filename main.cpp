@@ -40,7 +40,7 @@ int main()
             std::cout << sprites.dificulty;
             std::cin >> dif;
 
-            std::cout << "\n¿Con cuantos jugadores deseas jugar? (1-4): ";
+            std::cout << "\nCon cuantos jugadores deseas jugar? (1-4): ";
             std::cin >> game_data.max_players;
 
             if (game_data.max_players < 1 || game_data.max_players > 4) // Checks if the number of players is valid
@@ -68,15 +68,15 @@ int main()
                 save_game(bombXY);
                 save_load.game_save = false;
             }else{
-                std::cout << "¡No a iniciado una partida!";
+                std::cout << "No a iniciado una partida!";
             }
             break;
         case 5:
-            std::cout << "¡Gracias por jugar! Hasta la próxima.\n"; // Shows the goodbye message
+            std::cout << "Gracias por jugar! Hasta la proxima.\n"; // Shows the goodbye message
             game_on = false;
             break;
         default:
-            std::cout << "Opción no valida. Intenta de nuevo.\n"; // Shows the invalid option message
+            std::cout << "Opcion no valida. Intenta de nuevo.\n"; // Shows the invalid option message
             break;
         }
     }

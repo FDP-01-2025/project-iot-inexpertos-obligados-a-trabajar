@@ -92,7 +92,7 @@ void player_action(int &turn, bool &lose, bool &bomb_explote) // Performs the ac
         game_data.game_status = false;    
     break;
     default:
-        std::cout << "Acción inválid, usted a perdido\n";
+        std::cout << "Accion invalido, usted a perdido\n";
         players[turn].is_alive = false;
         break;
     }

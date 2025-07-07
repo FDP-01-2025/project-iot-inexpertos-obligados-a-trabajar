@@ -132,15 +132,5 @@ bool victory(int points, int playerIndex)
 
     std::cout << "Puntos finales: " << points << "\n";// Displays final score
     print_board();// Prints the final game board
-
-    // asks if wants to play again
-    std::cout << "\n¿Desea jugar otra partida? (1=Sí, 0=No): ";
-    int opcion;
-    std::cin >> opcion;
-    if (opcion == 1) {
-        std::vector<std::vector<int>> newBombXY;// Creates a new bomb coordinate vector
-        reset_game(newBombXY);// Resets the game with new bombs
-    }
-
     return true;
 }
