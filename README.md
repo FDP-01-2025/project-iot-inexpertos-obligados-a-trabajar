@@ -94,6 +94,12 @@ Cada jugador realiza un turno y elige una acción:
 
 ---
 
+## 🧱 Mockup de Interfaz en Consola
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+
 ## 📂 Sistema de Guardado/Carga
 
 - Archivos guardados en la carpeta: `partidas_guardadas/`
