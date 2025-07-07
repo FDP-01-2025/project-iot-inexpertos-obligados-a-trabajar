@@ -97,7 +97,8 @@ A continuación se muestran capturas del juego:
 
 ![alt text](Resources/image.png)
 ![alt text](Resources/image_2.pngS)
-![alt text](image.png)
+![alt text](Resources/image_3.png)
+
 ---
 
 ## 📂 Sistema de Guardado/Carga
@@ -136,19 +137,25 @@ A continuación se muestran capturas del juego:
 
 ## 📦 Archivos y Funciones Clave
 
-| Archivo / Función        | Descripción                                                                 |
-| ------------------------ | --------------------------------------------------------------------------- |
-| `main()`                 | Inicia el juego, muestra el título y lanza el menú principal                |
-| `game_menu()`            | Muestra el menú de juego (Solitario, Multijugador, Salir)                   |
-| `game_multiplayer()`     | Controla el flujo del turno por jugador                                     |
-| `player_configuration()` | Configura nombre y recursos iniciales de los jugadores                      |
-| `prove_coordinates()`    | Verifica si se pisa bomba, tesoro, fuera de rango, etc.                     |
-| `save_game()`            | Guarda partida en un archivo dentro de `/partidas_guardadas/`               |
-| `load_game()`            | Carga una partida guardada                                                  |
-| `print_board()`          | Muestra el estado del tablero actual                                        |
-| `victory()`              | Muestra la pantalla de victoria y tabla de puntos                           |
-| `reset_game_state()`     | Reinicia el juego y limpia estructuras de estado                            |
-| `sprite(type)`           | Imprime sprites ASCII del tipo solicitado (`Title`, `Bomb`, `Winner`, etc.) |
+| Archivo / Función           | Descripción                                                                 | Ubicación           |
+|-----------------------------|-----------------------------------------------------------------------------|---------------------|
+| `reset_game()`              | Reinicia el juego y limpia estructuras de estado (Datos del juego acá)      | `configuratio.cpp`  |
+| `game()`                    | Controla el flujo del turno por jugador                                     | `interface.cpp`     |
+| `print_board()`             | Muestra el estado del tablero actual                                        | `interface.cpp`     |
+| `main()`                    | Inicia el juego, muestra el título y lanza el menú principal                | `main.cpp`          |
+| `menu_difficulty()`         | Selecciona la dificultad con la que se va a jugar                           | `game.cpp`          |
+| `game_over_message()`       | Muestra el mensaje de error y la razón por la que ha perdido                | `game.cpp`          |
+| `prove_coordinates()`       | Verifica si se pisa bomba, tesoro, fuera de rango, etc.                     | `game.cpp`          |
+| `victory()`                 | Muestra la pantalla de victoria y tabla de puntos                           | `game.cpp`          |
+| `player_configuration()`    | Configura nombre y recursos iniciales de los jugadores                      | `player.cpp`        |
+| `pistol_shot()`             | Acción de disparar                                                          | `player.cpp`        |
+| `player_action()`           | Crea un menú para que el jugador seleccione una acción                      | `player.cpp`        |
+| `shield_action_protection()`| Acción de proteger                                                          | `player.cpp`        |
+| `random_coordinates()`      | Genera las coordenadas aleatorias                                           | `random_coordinates`|
+| `save_game()`               | Guarda partida en un archivo dentro de `/partidas_guardadas/`               | `save_load.cpp`     |
+| `load_game()`               | Carga una partida guardada                                                  | `save_load.cpp`     |
+| `sprite(type)`              | Imprime sprites ASCII del tipo solicitado (`Title`, `Bomb`, `Winner`, etc.) | `sprites.cpp`       |
+
 
 ## Estructuras de Control Utilizadas
 
