@@ -91,6 +91,14 @@ Cada jugador realiza un turno y elige una acción:
 * `$`: Tesoro
 
 ---
+## 📸 Interfaz del Juego (Mockup)
+
+A continuación se muestran capturas del juego:
+
+![alt text](Resources/image.png)
+![alt text](Resources/image_2.pngS)
+![alt text](image.png)
+---
 
 ## 📂 Sistema de Guardado/Carga
 
