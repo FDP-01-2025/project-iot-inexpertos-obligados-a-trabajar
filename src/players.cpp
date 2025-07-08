@@ -34,14 +34,16 @@ void pistol_shot(int &turn, bool &lose, bool &bomb_explote)
     if (lose) // If the player loses, he gains 10 points and the bomb explodes
     {
         std::cout<< sprites.pistol;
-        std::cout << players[turn].name << " a hecho explotar una bomba! +10 puntos extra\n";
-        players[turn].points += 10;
-        bomb_explote = true;
+        std::cout << players[turn].name << " has hecho explotar una bomba!, ha perdido\n";
+        players[turn].is_alive = false;
+
+        return;
     }
     else // If the player does not lose, he does not gain points
     {
         std::cout<< sprites.pistol;
-        std::cout << players[turn].name << " a desperdiciado una bala!, no gana puntos extra\n";
+        std::cout << players[turn].name << " haz encontrado un cofre a la distancia! +10 puntos extra\n";
+        players[turn].points += 10;
     }
 
     players[turn].bullets--; // Decreases the number of bullets
@@ -98,12 +100,12 @@ void player_action(int &turn, bool &lose, bool &bomb_explote) // Performs the ac
     case 3: // action_shoot with pistol
         pistol_shot(turn, lose, bomb_explote); // Performs the action of the player
         break;
-    case 4:  
+    case 4: //Save
         save_load.game_save = true;
         game_data.game_status = false;    
     break;
     default:
-        std::cout << "\033[91mAccion inválida, usted ha perdido\033[0m\n";
+        std::cout << "\033[91mAccion invalida, usted ha perdido\033[0m\n";
         players[turn].is_alive = false;
         break;
     }

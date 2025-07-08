@@ -39,7 +39,7 @@ void load_players_data(std::ifstream &archivo) // Loads the players data
 
 void save_game(const std::vector<std::vector<int>> &bombXY) // Saves the game
 {
-    // New: Create saved_games directory if it doesn't exist (works on Windows)
+    //Create saved_games directory if it doesn't exist (works on Windows)
     system("mkdir saved_games 2> nul");
 
     std::vector<std::string> existingFiles;
@@ -129,7 +129,6 @@ void save_game(const std::vector<std::vector<int>> &bombXY) // Saves the game
 
     for (int i = 1; i <= 3; i++)
     {
-        // [MODIFIED] Added saved_games/ prefix to path
         std::string filename = "saved_games/partida" + std::to_string(i) + ".txt";
         std::ifstream testFile(filename);
         if (!testFile.good())

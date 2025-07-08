@@ -130,7 +130,7 @@ void game(std::vector<std::vector<int>> &bombXY)
                 {
                     // If the coordinate is valid
                     players[turn].points += 20;
-                    std::cout<<sprites.treasure;
+                    std::cout<< sprites.treasure;
                     std::cout << "Tesoro encontrado! +20 puntos\n";
                 }
 
@@ -144,6 +144,9 @@ void game(std::vector<std::vector<int>> &bombXY)
                     { // If the player wants to retire
                         players[turn].is_alive = false;
                         players[turn].points += 40;
+                    }else if(retire != 0){
+                        std::cout << players[turn].name << "por graciosito has perdido!\n";
+                        players[turn].is_alive = false;
                     }
                 }
 
